@@ -22,16 +22,19 @@ include 'includes/navigation.php';
             <h2 class="text-center">Featured Books</h2>
 
             <?php
-            $sql = "select * from new_books ";
+            $sql = "select * from new_books n, featured_books f where n.id=f.book_id";
             $catquery=mysqli_query($conn,$sql);
             ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
                 <p class="price">Our Price: $<?php echo $S["price"]; ?></p>
-
-                <button type="button" class="btn btn-info btn-xs ">Details</button>
-
+                    
+                    <?php $book_id=$S["id"]; ?>
+                
+                  <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
+                
+             
                 <button type="button"  class="btn btn-info btn-xs">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
             </div>

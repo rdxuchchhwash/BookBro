@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2017 at 01:00 PM
+-- Generation Time: Dec 06, 2017 at 08:11 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -98,16 +98,18 @@ INSERT INTO `category` (`id`, `category_name`) VALUES
 
 CREATE TABLE `featured_books` (
   `id` int(11) NOT NULL,
-  `bk_name` varchar(50) NOT NULL
+  `bk_name` varchar(50) NOT NULL,
+  `book_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `featured_books`
 --
 
-INSERT INTO `featured_books` (`id`, `bk_name`) VALUES
-(1, 'Misir Ali Somogro'),
-(2, 'Lilabotir Mrittu');
+INSERT INTO `featured_books` (`id`, `bk_name`, `book_id`) VALUES
+(3, 'Misir Ali Somogro', 1),
+(5, 'Mrittu 2', 7),
+(4, 'Jajabor Mrittu 2', 9);
 
 -- --------------------------------------------------------
 
@@ -138,24 +140,27 @@ CREATE TABLE `new_books` (
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `img_path` varchar(100) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `language` varchar(20) NOT NULL,
+  `book_type` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `new_books`
 --
 
-INSERT INTO `new_books` (`id`, `bk_name`, `category`, `author`, `description`, `quantity`, `price`, `img_path`, `date`) VALUES
-(1, 'Misir Ali Somogro', 'NOVELS', 'JAFOR IQBAL', 'ASDASDASDASDASDASDAD', 10, 200, 'images/bk1.jpg', '2017-12-05'),
-(2, 'Lilabotir Mrittu', 'STORY', 'HUMAYUN AHMED', 'adasdasdasd', 20, 250, 'images/bk2.jpg', '2017-12-05'),
-(3, 'Akjon Himu Abong Kyekti ', 'NOVELS', 'JAFOR IQBAL', 'asadadasdasd', 15, 240, 'images/bk3.jpg', '2017-12-05'),
-(4, 'Abong Himu', 'NOVELS', 'JAFOR IQBAL', 'szadfdsfs', 15, 350, 'images/bk4.jpg', '2017-12-06'),
-(5, 'Nishithini', 'STORY', 'HUMAYUN AHMED', 'dasdasdas', 25, 320, 'images/bk5.jpg', '2017-12-06'),
-(6, 'Lilabotir Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06'),
-(7, 'Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06'),
-(8, 'Lilabotir 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06'),
-(9, 'Jajabor Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06'),
-(10, 'Amar golpo', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06');
+INSERT INTO `new_books` (`id`, `bk_name`, `category`, `author`, `description`, `quantity`, `price`, `img_path`, `date`, `country`, `language`, `book_type`) VALUES
+(1, 'Misir Ali Somogro', 'NOVELS', 'JAFOR IQBAL', 'ASDASDASDASDASDASDAD', 10, 200, 'images/bk1.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW'),
+(2, 'Lilabotir Mrittu', 'STORY', 'HUMAYUN AHMED', 'adasdasdasd', 20, 250, 'images/bk2.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW'),
+(3, 'Akjon Himu Abong Kyekti ', 'NOVELS', 'JAFOR IQBAL', 'asadadasdasd', 15, 240, 'images/bk3.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW'),
+(4, 'Abong Himu', 'NOVELS', 'JAFOR IQBAL', 'szadfdsfs', 15, 350, 'images/bk4.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW'),
+(5, 'Nishithini', 'STORY', 'HUMAYUN AHMED', 'dasdasdas', 25, 320, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW'),
+(6, 'Lilabotir Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW'),
+(7, 'Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW'),
+(8, 'Lilabotir 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW'),
+(9, 'Jajabor Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW'),
+(10, 'Amar golpo', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW');
 
 -- --------------------------------------------------------
 
@@ -187,7 +192,10 @@ CREATE TABLE `old_books` (
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `img_path` varchar(100) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `language` varchar(20) NOT NULL,
+  `book_type` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -245,7 +253,8 @@ ALTER TABLE `category`
 -- Indexes for table `featured_books`
 --
 ALTER TABLE `featured_books`
-  ADD PRIMARY KEY (`id`,`bk_name`);
+  ADD PRIMARY KEY (`id`,`bk_name`),
+  ADD UNIQUE KEY `book_id` (`book_id`);
 
 --
 -- Indexes for table `new_books`
@@ -284,7 +293,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -294,7 +303,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `featured_books`
 --
 ALTER TABLE `featured_books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `new_books`
 --

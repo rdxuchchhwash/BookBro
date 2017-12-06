@@ -23,7 +23,7 @@ include 'includes/navigation.php';
 
     <div class="col-md-8">
         <div class="row">
-            <h2 class="text-center">Featured Books</h2>
+            <h2 class="text-center">Books By Category</h2>
 
             <?php
             $sql = "select * from new_books where category='$category_name'";
@@ -34,7 +34,9 @@ include 'includes/navigation.php';
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
                 <p class="price">Our Price: $<?php echo $S["price"]; ?></p>
 
-                <button type="button" class="btn btn-info btn-xs ">Details</button>
+                <?php $book_id=$S["id"]; ?>
+
+                <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
 
                 <button type="button"  class="btn btn-info btn-xs">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>

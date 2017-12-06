@@ -15,7 +15,7 @@ $authorquery=mysqli_query($conn,$sql);
         <a href="home.php" class="navbar-brand">BookBro</a>
 
         <ul class="nav navbar-nav">
-            <li><a href="#">HOME</a></li>
+            <li><a href="home.php">HOME</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CATEGORIES<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
@@ -39,7 +39,7 @@ $authorquery=mysqli_query($conn,$sql);
                 </ul>
             </li>
 
-            <li><a href="#">NEW BOOKS</a></li>
+            <li><a href="new_books.php">NEW BOOKS</a></li>
 
             <li><a href="#">OLD BOOKS</a></li>
 
