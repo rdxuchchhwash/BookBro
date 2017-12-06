@@ -22,7 +22,13 @@ include 'includes/navigation.php';
         $sql = "select * from new_books where id=$bookID";
         $detailquery=mysqli_query($conn,$sql);
 ?> 
-<?php $S=mysqli_fetch_assoc($detailquery);?>
+<?php $S=mysqli_fetch_assoc($detailquery);
+    $viewCount=$S["no_of_views"];
+    $viewCount++;
+    $sql = "update new_books set no_of_views='$viewCount' where id='$bookID'";
+    mysqli_query($conn,$sql);
+
+?>
 
 
 <div class="container">
@@ -33,7 +39,7 @@ include 'includes/navigation.php';
         <div class="col-xs-5" style="border:0px solid gray">
             <!--  -->
             <h3><?php echo $S["bk_name"]; ?></h3>    
-            <small style="color:#337ab7">(5054 views)</small></h5>
+            <small style="color:#337ab7">( <?php echo $viewCount; ?> views)</small></h5>
 
         <!-- Price -->
         <h6 class="title-price"><small>PRICE</small></h6>
@@ -75,7 +81,7 @@ include 'includes/navigation.php';
 
                 <tr>
                     <th>Title</th>
-                    <td>The Art of War</td>
+                    <td><?php echo $S["bk_name"]; ?></td>
 
                 </tr>
                 <tr>
