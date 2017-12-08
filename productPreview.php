@@ -61,7 +61,7 @@ include 'includes/navigation.php';
             </div>
         </div>                
 
-        <!-- Botones de compra -->
+        <!--  -->
         <div class="section" style="padding-bottom:20px;">
             <button class="btn btn-success"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>ADD TO CART</button>
 

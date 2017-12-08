@@ -7,7 +7,7 @@ require_once 'db/db_init.php' ;
 session_start();
 //echo session_id();
 
-
+    print_r($GLOBALS);
     $bookID = $_GET['bk_id'];
     $ssid=session_id();
     //if user logged in then $flag=1 otherwise 0
@@ -39,11 +39,4 @@ session_start();
         mysqli_query($conn,$sql);
     }
     
-
 ?>
-
-<html>
-    <?php echo $bookID; ?>
-    <p>Hello World</p>
-</html>
-

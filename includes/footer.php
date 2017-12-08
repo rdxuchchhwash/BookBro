@@ -22,11 +22,10 @@
                                 <div class="link-area">
                                     <h3>SUPPORT</h3>
                                     <ul>
-                                        <li><a href="#"> Contact Us</a></li>
-                                        <li><a href="#"> Guide</a></li>
-                                        <li><a href="#"> FAQ</a></li>
-                                        <li><a href="#"> Help Desk</a></li>
-                                        <li><a href="#"> Jobs</a></li>
+                                        <li><a href="/BookBro/footer_contactUs.php"> Contact Us</a></li>
+                                        <li><a href="/BookBro/footer_guide.php"> Guide</a></li>
+                                        <li><a href="/BookBro/footer_faq.php"> FAQ</a></li>
+                                        <li><a href="/BookBro/footer_contact.php"> Help Desk</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -35,9 +34,8 @@
                                 <div class="link-area">
                                     <h3>GET TO KNOW US</h3>
                                     <ul>
-                                        <li><a href="#"> Testimonial</a></li>
-                                        <li><a href="#"> About Us</a></li>
-                                        <li><a href="#"> News</a></li>
+                                        <li><a href="/BookBro/footer_testimonial.php"> Testimonial</a></li>
+                                        <li><a href="/BookBro/footer_aboutUs.php"> About Us</a></li>
                                         <li><a href="#"> Site Map</a></li>
                                     </ul>
                                 </div>
@@ -46,9 +44,9 @@
                                 <div class="link-area">
                                     <h3>POLICIES</h3>
                                     <ul>
-                                        <li><a href="#"> Terms of Use</a></li>
-                                        <li><a href="#"> Privacy Policy</a></li>
-                                        <li><a href="#"> Refund Policy</a></li>
+                                        <li><a href="/BookBro/footer_terms.php"> Terms of Use</a></li>
+                                        <li><a href="/BookBro/footer_policy.php"> Privacy Policy</a></li>
+                                        <li><a href="/BookBro/footer_refund.php"> Refund Policy</a></li>
 
                                     </ul>
                                 </div>

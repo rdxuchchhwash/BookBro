@@ -65,7 +65,7 @@ include 'includes/navigation.php';
                         <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $S["price"]; ?></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $total; ?></strong></td>
                         <td class="col-sm-1 col-md-1">
-                            <button type="button" class="btn btn-danger">
+                            <button type="button" class="btn btn-danger" onClick="document.location.href='removeFromCart.php?cart_id=<?php echo $book_id; ?>'">
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </button>
                         </td>
@@ -104,8 +104,8 @@ include 'includes/navigation.php';
                         <td>   </td>
                         <td>   </td>
                         <td>
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            <button type="button" class="btn btn-default" onClick="document.location.href='home.php'">
+                                <span class="glyphicon glyphicon-shopping-cart" ></span> Continue Shopping
                             </button>
                         </td>
                         <td>

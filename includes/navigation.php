@@ -66,16 +66,18 @@ $authorquery=mysqli_query($conn,$sql);
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">MY PROFILE <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#">MY ORDERS</a></li>
-                    <li><a href="#">MY WISHLIST</a></li>
-                    <li><a href="#">MY REVIEWS</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">SIGN OUT</a></li>
+                    <li><a href="#">MY WISHLIST</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">MY REVIEWS</a></li>
+                   
+
                 </ul>
             </li>
             
             <button class="btn btn-primary navbar-btn  btn-md" id=cartButton onClick="document.location.href='orderDetails.php?bk_id=1'" ><span class="glyphicon glyphicon-shopping-cart" ></span>CART</button>
             
-            <button class="btn btn-primary navbar-btn  btn-md" id=loginRedirect>LOGIN</button>
+            <button class="btn btn-primary navbar-btn  btn-md" id=loginRedirect onClick="document.location.href='signIn.php?'">LOGIN</button>
         </ul>
 
         <!--/nv 

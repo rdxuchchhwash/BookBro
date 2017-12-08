@@ -1,0 +1,24 @@
+p{
+
+}
+body
+{
+    margin-left:100px;
+    margin-right:100px;
+
+}
+.index-link{
+    margin-left: -100px;
+    margin-right: -100px;
+}
+
+.index-social{
+    margin-left: -100px;
+    margin-right: -100px;
+}
+
+#guide{
+    margin-left: 200px;
+
+    margin-right: 200px;
+}
