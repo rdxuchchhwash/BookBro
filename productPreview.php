@@ -19,13 +19,13 @@ include 'includes/navigation.php';
 </div>
         
 <?php
-        $sql = "select * from new_books where id=$bookID";
+        $sql = "select * from books where id=$bookID";
         $detailquery=mysqli_query($conn,$sql);
 ?> 
 <?php $S=mysqli_fetch_assoc($detailquery);
     $viewCount=$S["no_of_views"];
     $viewCount++;
-    $sql = "update new_books set no_of_views='$viewCount' where id='$bookID'";
+    $sql = "update books set no_of_views='$viewCount' where id='$bookID'";
     mysqli_query($conn,$sql);
 
 ?>
@@ -111,6 +111,11 @@ include 'includes/navigation.php';
 
 <?php include 'includes/footer.php'; ?>
 <?php include 'includes/scrollbarHome.php'; ?>
+
+</body>
+</html>
+
+
 
 
 

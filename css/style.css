@@ -135,3 +135,9 @@ li.dropdown:hover > .dropdown-menu {
     background-color:#7b7b7b52;
    color:#121725;
 }
+
+
+.btn-sm, .btn-group-sm > .btn{
+    margin-top: 2px;
+    border-radius:5px;
+}

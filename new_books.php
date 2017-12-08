@@ -22,21 +22,22 @@ include 'includes/navigation.php';
             <h2 class="text-center">New Books</h2>
 
             <?php
-            $sql = "select * from new_books ";
+            $sql = "select * from books where book_type='NEW'";
             $catquery=mysqli_query($conn,$sql);
             ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
                 <p class="price">Our Price: $<?php echo $S["price"]; ?></p>
-                    
-                    <?php $book_id=$S["id"]; ?>
-                
-                  <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
-                
-             
-                <button type="button"  class="btn btn-info btn-xs">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+
+                <?php $book_id=$S["id"]; ?>
+
+                <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
+
+
+                <button type="button"  class="btn btn-info btn-xs" onClick="document.location.href='addToCart.php?bk_id=<?php echo $book_id; ?>'">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
+                </button>
             </div>
             <?php endwhile; ?>
 

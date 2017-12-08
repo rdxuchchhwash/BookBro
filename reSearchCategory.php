@@ -26,7 +26,7 @@ include 'includes/navigation.php';
             <h2 class="text-center">Books By Category</h2>
 
             <?php
-            $sql = "select * from new_books where category='$category_name'";
+            $sql = "select * from books where category='$category_name' and book_type='NEW'";
             $catquery=mysqli_query($conn,$sql);
             ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
             <div class="col-md-3">
@@ -38,8 +38,9 @@ include 'includes/navigation.php';
 
                 <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
 
-                <button type="button"  class="btn btn-info btn-xs">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart</button>
+                <button type="button"  class="btn btn-info btn-xs" onClick="document.location.href='addToCart.php?bk_id=<?php echo $book_id; ?>'">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
+                </button>
             </div>
             <?php endwhile; ?>
 

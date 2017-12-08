@@ -73,7 +73,7 @@ $authorquery=mysqli_query($conn,$sql);
                 </ul>
             </li>
             
-            <button class="btn btn-primary navbar-btn  btn-md" id=cartButton><span class="glyphicon glyphicon-shopping-cart"></span>CART</button>
+            <button class="btn btn-primary navbar-btn  btn-md" id=cartButton onClick="document.location.href='orderDetails.php?bk_id=1'" ><span class="glyphicon glyphicon-shopping-cart" ></span>CART</button>
             
             <button class="btn btn-primary navbar-btn  btn-md" id=loginRedirect>LOGIN</button>
         </ul>
