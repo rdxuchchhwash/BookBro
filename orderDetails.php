@@ -1,4 +1,3 @@
-
 <?php
 $subtotal=0;
 require_once 'db/db_init.php' ; 
@@ -6,7 +5,22 @@ require_once 'db/db_init.php' ;
 include 'includes/head.php'; 
 include 'includes/navigation.php';
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$logST=  $_SESSION["login_status"];
+if($logST=="reset")
+{
+    $logST=0;
+}
+else
+{
+    $logST=1;
+}
+
 ?>    
+
 
 <link rel="stylesheet" href="css/productPreview.css">
 <div id="headerWrapper">
@@ -14,6 +28,54 @@ include 'includes/navigation.php';
     <div id="logotext"></div>
     <div id="fore-flower"></div>
 </div>
+
+<!--Ajax CART START -->
+<script>
+    function showCart() {
+        var xhttp = new XMLHttpRequest();
+        var r;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                r = this.responseText;
+                var str1 = "CART(";
+                var str2 = ")";
+                r = str1.concat(r,str2);
+                document.getElementById('cartButton').innerText = r;   
+
+            }
+        };
+        xhttp.open("GET", "noOfCartProducts.php?", true);
+        xhttp.send(); 
+    }
+</script>
+
+<script>
+    function checkLogin(str) {
+        var xhttp = new XMLHttpRequest();
+        var r;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                r = this.responseText;
+                var str1 = "CART(";
+                var str2 = ")";
+                r = str1.concat(r,str2);
+                document.getElementById('cartButton').innerText = r;   
+
+            }
+        };
+        //var l = <?php echo '$logST'; ?> ;
+        alert();
+        xhttp.open("GET", "checkout.php?", true);
+        xhttp.send(); 
+    }
+</script>
+<!--Ajax CART END -->
+
+<script>
+    showCart(); 
+</script>
 
 <div class="container">
     <div class="row">
@@ -57,10 +119,10 @@ include 'includes/navigation.php';
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
                             <form action="update_qty.php" method="post">
-                            <input type="text" class="form-control" name="bk_qty" value="<?php echo $S["book_qty"]; ?>">
-                            <button type="submit" class="btn btn-primary btn-sm" id="btnUpdate" name="book_id" value ="<?php echo $book_id; ?>">UPDATE</button> <span id="txtHint"></span>
+                                <input type="text" class="form-control" name="bk_qty" value="<?php echo $S["book_qty"]; ?>">
+                                <button type="submit" class="btn btn-primary btn-sm" id="btnUpdate" name="book_id" value ="<?php echo $book_id; ?>">UPDATE</button> <span id="txtHint"></span>
                             </form>
-                            
+
                         </td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $S["price"]; ?></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $total; ?></strong></td>
@@ -69,9 +131,9 @@ include 'includes/navigation.php';
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </button>
                         </td>
-                        
+
                     </tr>
-                   
+
                     <?php $subtotal+=$total; ?>
                     <?php endwhile; ?>
 
@@ -82,7 +144,7 @@ include 'includes/navigation.php';
                         <td><h5>SUBTOTAL</h5></td>
                         <td class="text-right"><h5><strong>BDT <?php echo $subtotal; ?></strong></h5></td>
                     </tr>	
-                    
+
                     <tr>
                         <td>   </td>
                         <td>   </td>
@@ -109,8 +171,9 @@ include 'includes/navigation.php';
                             </button>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success">
-                                Checkout <span class="glyphicon glyphicon-play"></span>
+
+                            <button type="button" class="btn btn-success" onclick="checkLogin(<?php echo $logST; ?>)">
+                                CHECKOUT <span class="glyphicon glyphicon-play"></span>
                             </button>
                         </td>
                     </tr>

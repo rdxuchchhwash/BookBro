@@ -12,9 +12,11 @@
                                 <div class="link-area">
                                     <h3>ABOUT US</h3>
                                     <P>The First Bangladeshi Site To Introduce Book Buy , Sell & Trade Online.Very Helpful for University Students</P>
-                                    <li class="fa-li"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li class="fa-li"><a href="#"><i class="fa fa-twitter" aria-hidden="true" ></i></a></li>
                                     <li class="fa-li"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                     <li class="fa-li"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+
                                 </div>
                             </div>
 

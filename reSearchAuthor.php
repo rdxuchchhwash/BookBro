@@ -16,6 +16,51 @@ include 'includes/navigation.php';
 </div>
 
 
+<!--Ajax CART START -->
+<script>
+    function addProduct(str) {
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                showCart();
+            }
+        };
+        xmlhttp.open("GET", "addToCart.php?bk_id=" + str, true);
+        xmlhttp.send();
+
+        // document.getElementById('cartButton').innerText = str;
+    }
+</script>
+
+<script>
+
+    function showCart() {
+        var xhttp = new XMLHttpRequest();
+        var r;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                r = this.responseText;
+                var str1 = "CART(";
+                var str2 = ")";
+                r = str1.concat(r,str2);
+                document.getElementById('cartButton').innerText = r;   
+
+            }
+        };
+        xhttp.open("GET", "noOfCartProducts.php?", true);
+        xhttp.send(); 
+    }
+
+</script>
+
+<script>
+    showCart(); 
+</script>
+
+<!--Ajax CART END -->
+
 <!--Show Products-->
 <div class="container-fluid">
 
@@ -32,13 +77,13 @@ include 'includes/navigation.php';
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
-                <p class="price">Our Price: $<?php echo $S["price"]; ?></p>
+                <p class="price">Our Price: BDT <?php echo $S["price"]; ?></p>
 
                 <?php $book_id=$S["id"]; ?>
 
                 <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
 
-                <button type="button"  class="btn btn-info btn-xs" onClick="document.location.href='addToCart.php?bk_id=<?php echo $book_id; ?>'">
+                <button type="button" id="demo" class="btn btn-info btn-xs" onclick="addProduct(<?php echo $book_id ?>)">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
             </div>
