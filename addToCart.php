@@ -1,12 +1,9 @@
 <?php 
 require_once 'db/db_init.php' ; 
 
-
-//tushar_work
-
-session_start();
-//echo session_id();
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
     print_r($GLOBALS);
     $bookID = $_GET['bk_id'];
     $ssid=session_id();
@@ -16,7 +13,7 @@ session_start();
     
 
 
-    $sql = "select book_qty from tempcart where book_id=$bookID";
+    $sql = "select book_qty from tempcart where book_id=$bookID and session_id='$ssid'";
     $result=mysqli_query($conn,$sql);
     $qty=mysqli_fetch_assoc($result);
 
@@ -25,7 +22,7 @@ session_start();
     if($q)
     {   
         ++$q;
-        $sql = "update tempcart set book_qty=$q where book_id=$bookID";
+        $sql = "update tempcart set book_qty=$q where book_id=$bookID and session_id='$ssid'";
         mysqli_query($conn,$sql);
     }
     else

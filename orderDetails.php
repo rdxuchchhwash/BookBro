@@ -9,16 +9,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-$logST=  $_SESSION["login_status"];
-if($logST=="reset")
-{
-    $logST=0;
-}
-else
-{
-    $logST=1;
-}
-
 ?>    
 
 
@@ -50,27 +40,6 @@ else
     }
 </script>
 
-<script>
-    function checkLogin(str) {
-        var xhttp = new XMLHttpRequest();
-        var r;
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-
-                r = this.responseText;
-                var str1 = "CART(";
-                var str2 = ")";
-                r = str1.concat(r,str2);
-                document.getElementById('cartButton').innerText = r;   
-
-            }
-        };
-        //var l = <?php echo '$logST'; ?> ;
-        alert();
-        xhttp.open("GET", "checkout.php?", true);
-        xhttp.send(); 
-    }
-</script>
 <!--Ajax CART END -->
 
 <script>
@@ -95,12 +64,13 @@ else
 
 
                     <?php
-
-                    $sql = "select * from books b , tempcart c where b.id=c.book_id ";
+                    $sessID = session_id();
+                    $sql = "select * from books b , tempcart c where b.id=c.book_id and session_id='$sessID'";
 
 
                     $showCarts=mysqli_query($conn,$sql);
 
+                    
                     while($S=mysqli_fetch_assoc($showCarts)):
                     $total=$S["book_qty"]*$S["price"];
                     $book_id=$S["id"];
@@ -172,7 +142,7 @@ else
                         </td>
                         <td>
 
-                            <button type="button" class="btn btn-success" onclick="checkLogin(<?php echo $logST; ?>)">
+                            <button type="button" class="btn btn-success" onClick="document.location.href='checkout.php?'">
                                 CHECKOUT <span class="glyphicon glyphicon-play"></span>
                             </button>
                         </td>

@@ -1,15 +1,12 @@
 <?php 
-
-session_start();
-
-?>
-<?php 
 require_once 'db/db_init.php' ; 
 include 'includes/head.php'; 
 include 'includes/navigation.php';
 
-
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    session_regenerate_id(true); 
+}
 
 ?>
 
@@ -62,6 +59,7 @@ include 'includes/navigation.php';
     showCart(); 
 </script>
 <!--Ajax CART END -->
+
 
 <!--Show Products-->
 <div class="container-fluid">

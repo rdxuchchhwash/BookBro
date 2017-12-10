@@ -51,8 +51,10 @@ $authorquery=mysqli_query($conn,$sql);
 
             <li><a href="#">OLD BOOKS</a></li>
 
-            <li><a href="#">EXCHANGE BOOKS</a></li>
-
+            <?php
+                if($_SESSION["login_status"]=="success"){echo '
+                <li><a href="sellBook">SELL BOOK</a></li> ';} ?>
+                
             <form class="navbar-form navbar-left">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search">
@@ -69,7 +71,8 @@ $authorquery=mysqli_query($conn,$sql);
 
         <ul class="nav navbar-nav navbar-right">
 
-
+            <?php
+                if($_SESSION["login_status"]=="success"){echo '
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">MY PROFILE <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -82,7 +85,7 @@ $authorquery=mysqli_query($conn,$sql);
 
                 </ul>
             </li>
-
+                ';} ?>
             <button class="btn btn-primary navbar-btn  btn-md" id=cartButton onClick="document.location.href='orderDetails.php?bk_id=1'" >CART(0)</button>
                         
             

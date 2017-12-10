@@ -1,7 +1,10 @@
 <?php 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 if( !isset($_SESSION["login_status"]) ){
     $_SESSION["login_status"]="reset";
+    
 }
 ?>
 <?php 
@@ -16,7 +19,7 @@ include 'includes/navigation.php';
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <h1 class="text-center login-title">SIGN IN</h1>
             <div class="account-wall">
-
+                <?php //print_r($GLOBALS); ?>
                 <form class="form-signin" action="signinss.php" method="POST">
                     <input type="text" name="email" class="form-control" placeholder="Email" required autofocus>
                     <input type="password" name="pass" class="form-control" placeholder="Password" required>
@@ -26,6 +29,13 @@ include 'includes/navigation.php';
                     if($_SESSION["login_status"]== "failed")
                     {   echo '
                         <script>alert("Invalid Username/Password. Please try again!");</script>';
+                        $_SESSION["login_status"]="reset";
+                    }
+                    
+                    else if($_SESSION["login_status"]=="continueToCheckout")
+                    {
+                        echo '
+                        <script>alert("Please Login To Continue");</script>';
                         $_SESSION["login_status"]="reset";
                     }
                     ?>

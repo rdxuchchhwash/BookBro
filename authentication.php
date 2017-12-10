@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once 'db/db_init.php' ; 
 
 $usermail=$_SESSION["email"];
@@ -20,15 +22,12 @@ if($count==1)
 {   
     $_SESSION["login_status"] = "success";	
     $_SESSION["user_id"] = $id["user_id"];
-    echo "Success";
-    echo $id["user_id"];
     header('Location:home.php');
 }
 
 else
 {   
     $_SESSION["login_status"] = "failed";	
-    echo "failed";
     header('Location:signIn.php');
 
 }
