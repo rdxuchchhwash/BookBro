@@ -53,7 +53,7 @@ $authorquery=mysqli_query($conn,$sql);
 
             <?php
                 if($_SESSION["login_status"]=="success"){echo '
-                <li><a href="sellBook">SELL BOOK</a></li> ';} ?>
+                <li><a href="sellBook.php">SELL BOOK</a></li> ';} ?>
                 
             <form class="navbar-form navbar-left">
                 <div class="input-group">
@@ -81,6 +81,8 @@ $authorquery=mysqli_query($conn,$sql);
                     <li><a href="#">MY WISHLIST</a></li>
                     <li class="divider"></li>
                     <li><a href="#">MY REVIEWS</a></li>
+                    <li class="divider"></li>
+                    <li><a href="myprofile.php">PROFILE</a></li>
 
 
                 </ul>
