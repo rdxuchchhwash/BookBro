@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 09:29 AM
+-- Generation Time: Dec 10, 2017 at 01:42 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -94,15 +94,15 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `bk_name`, `category`, `author`, `description`, `quantity`, `price`, `img_path`, `date`, `country`, `language`, `book_type`, `no_of_views`) VALUES
-(1, 'Misir Ali Somogro', 'NOVELS', 'JAFOR IQBAL', 'ASDASDASDASDASDASDAD', 10, 200, 'images/bk1.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 12),
-(2, 'Lilabotir Mrittu', 'STORY', 'HUMAYUN AHMED', 'adasdasdasd', 20, 250, 'images/bk2.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 6),
+(1, 'Misir Ali Somogro', 'NOVELS', 'JAFOR IQBAL', 'ASDASDASDASDASDASDAD', 10, 200, 'images/bk1.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 116),
+(2, 'Lilabotir Mrittu', 'STORY', 'HUMAYUN AHMED', 'adasdasdasd', 20, 250, 'images/bk2.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 7),
 (3, 'Akjon Himu Abong Kyekti ', 'NOVELS', 'JAFOR IQBAL', 'asadadasdasd', 15, 240, 'images/bk3.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 13),
-(4, 'Abong Himu', 'NOVELS', 'JAFOR IQBAL', 'szadfdsfs', 15, 350, 'images/bk4.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 5),
+(4, 'Abong Himu', 'NOVELS', 'JAFOR IQBAL', 'szadfdsfs', 15, 350, 'images/bk4.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 6),
 (5, 'Nishithini', 'STORY', 'HUMAYUN AHMED', 'dasdasdas', 25, 320, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 3),
 (6, 'Lilabotir Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 1),
-(7, 'Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 8),
+(7, 'Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 13),
 (8, 'Lilabotir 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 0),
-(9, 'Jajabor Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 1),
+(9, 'Jajabor Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 11),
 (10, 'Amar golpo', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 0);
 
 -- --------------------------------------------------------
@@ -193,17 +193,6 @@ CREATE TABLE `tempcart` (
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tempcart`
---
-
-INSERT INTO `tempcart` (`id`, `session_id`, `book_id`, `book_type`, `book_qty`, `user_id`) VALUES
-(5, 'dtchb0rd55o3rtuq5lqleub1o4', 7, 'NEW', 4, NULL),
-(6, 'dtchb0rd55o3rtuq5lqleub1o4', 9, 'NEW', 2, NULL),
-(19, 'dtchb0rd55o3rtuq5lqleub1o4', 1, 'NEW', 1, NULL),
-(23, 'dtchb0rd55o3rtuq5lqleub1o4', 3, 'NEW', 1, NULL),
-(24, 'dtchb0rd55o3rtuq5lqleub1o4', 5, 'NEW', 4, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -211,15 +200,25 @@ INSERT INTO `tempcart` (`id`, `session_id`, `book_id`, `book_type`, `book_qty`, 
 --
 
 CREATE TABLE `user_info` (
+  `user_id` int(11) NOT NULL,
   `full_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `mobile_no` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `dob` date NOT NULL,
   `gender` varchar(10) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_info`
+--
+
+INSERT INTO `user_info` (`user_id`, `full_name`, `email`, `mobile_no`, `password`, `dob`, `gender`, `address`) VALUES
+(1, 'Uchchhwash Chakraborty', 'rdx.uchchhwash@gmail.com', '01631666080', '12341234', '1996-04-10', 'Nadda , Dh', 'MALE'),
+(3, 'Roachi Shome', 'roachi.shome@gmail.com', '01680798783', '12341234', '1996-09-03', 'Sylhet , B', 'MALE'),
+(6, 'Showmik', 'showmik@gmail.com', '01612457896', '12341234', '1995-07-05', 'Sylhet , B', 'MALE'),
+(7, 'Nayan', 'nayan@gmail.com', '01621457896', '12341234', '1996-12-10', 'Nadda , Dh', 'MALE');
 
 -- --------------------------------------------------------
 
@@ -229,8 +228,8 @@ CREATE TABLE `user_info` (
 
 CREATE TABLE `user_login` (
   `user_id` int(11) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `pass` varchar(20) NOT NULL
+  `pass` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -278,13 +277,17 @@ ALTER TABLE `tempcart`
 -- Indexes for table `user_info`
 --
 ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`user_id`,`email`,`mobile_no`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `mobile_no` (`mobile_no`);
 
 --
 -- Indexes for table `user_login`
 --
 ALTER TABLE `user_login`
-  ADD PRIMARY KEY (`user_id`,`email`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -319,12 +322,12 @@ ALTER TABLE `featured_books`
 -- AUTO_INCREMENT for table `tempcart`
 --
 ALTER TABLE `tempcart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 --
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `user_login`
 --
