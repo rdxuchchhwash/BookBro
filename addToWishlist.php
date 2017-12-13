@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_SESSION['email']) && $_SESSION['login-status']=="success"){
+if (isset($_SESSION['email']) && $_SESSION['login_status']=="success"){
     
 $bookID = $_GET['bk_id'];
 $userMail=$_SESSION['email'];

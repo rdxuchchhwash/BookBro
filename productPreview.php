@@ -178,19 +178,38 @@ mysqli_query($conn,$sql);
                 </tbody>
             </table>
         </div>
-            <form action="writeReview.php" method="POST">
-                 <?php if($_SESSION['login_status']=="success"){echo "
+        <form action="writeReview.php" method="POST">
+            <?php if($_SESSION['login_status']=="success"){echo "
             <div class=\"section\" style=\"padding-bottom:20px;\">
                 <input type=\"text\" name=\"review\" id=\"review\" class=\"form-control\"  >
             </div>  
             <input type=\"hidden\" name=\"book_id\" value=\"$bookID\"/>";}
-                ?>
+            ?>
             <?php if($_SESSION['login_status']=="success"){echo "
             <div class=\"section\" style=\"padding-bottom:20px;\">
                 <button class=\"btn btn-info\" id=\"wish\" type=\"submit\"><span style=\"margin-right:20px\" aria-hidden=\"true\"></span>Write Review</button>
             </div>  ";}
-                ?>
-            </form>
+            ?>
+        </form>
+
+        <h3>ALL REVIEWS</h3>
+
+        <table class="table table-striped">
+
+            <tbody>
+                <?php
+                $sql = "select * from review where book_id='$bookID' and status=1";
+                $query=mysqli_query($conn,$sql);
+                ?> <?php while($reviews=mysqli_fetch_assoc($query)):?>
+                
+                <tr>
+                    <th><?php echo $reviews["username"]; ?></th>
+                    <td><?php echo $reviews["review_des"]; ?></td>
+                </tr>
+                
+                 <?php endwhile; ?>
+            </tbody>
+        </table>
     </div>
 </div>        
 

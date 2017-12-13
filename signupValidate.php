@@ -1,7 +1,7 @@
-<?php
+<pre><?php
 require_once 'db/db_init.php' ; 
 session_start();
-
+//print_r($GLOBALS);
 $flag=1;
 if(strlen($_POST["fname"])==0){
     echo "No Input On firstname field!";
@@ -77,7 +77,7 @@ if(($gender!="MALE")&& ($gender!="FEMALE")){
     $flag=0;
 }
 
-if (($_POST["chkbox"]!="Agree")) {
+if (($_POST["checkbx"]!="Agree")||isset($_POST["checkbx"])) {
     echo "Agreement not accepted!";
     $flag=0;
 }
@@ -103,4 +103,5 @@ $_SESSION["SignUpStatus"] = "Complete";
 }
     
 ?>
+</pre>
 

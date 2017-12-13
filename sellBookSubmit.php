@@ -82,14 +82,26 @@ else
     $flag=0;
     echo '<script>alert("Uploaded File Type must be JPEG/JPG")</script>';
 }
+
+$email=$_SESSION['email'];
+$sql = "SELECT * FROM user_info where email= '$email'"; 
+$result=mysqli_query($conn,$sql);
+$info=mysqli_fetch_assoc($result);
+
+$sellerCont=$info['mobile_no'];
+$sellerName=$info['full_name'];
 if($flag==1)
 {
     move_uploaded_file($s,"images/".$n);
     $sql = "insert into books (bk_name,category,author,description,quantity,price,img_path,date,country,language,book_type,no_of_views) values('$bookName','$category','$author','$description',$qty,$price,'$n','$date','$country','$language','OLD',0)";
     mysqli_query($conn,$sql);
 
-    $sql = "insert into oldbookstat (old_book_id,book_status) values('$count','PENDING')";
+    $sql = "insert into oldbookstat (old_book_id,book_status,old_book_seller_mail,seller_contact,seller_name) values('$count','PENDING','$email','$sellerCont','$sellerName')";
     mysqli_query($conn,$sql);
+    echo '<script>alert("Sell Book Submitted.Waiting For Admin Approval")</script>';
+    echo '<script>window.location = "sellBook.php";</script>';
+
 }
+
 ?>
 </pre>

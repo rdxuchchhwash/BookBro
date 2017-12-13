@@ -80,7 +80,7 @@ $authorquery=mysqli_query($conn,$sql);
                     <li class="divider"></li>
                     <li><a href="wishlist.php">MY WISHLIST</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">MY REVIEWS</a></li>
+                    <li><a href="myReviews.php">MY REVIEWS</a></li>
                     <li class="divider"></li>
                     <li><a href="myprofile.php">PROFILE</a></li>
 
