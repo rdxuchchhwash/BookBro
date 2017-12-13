@@ -72,3 +72,7 @@ img {
 .form-control{
 text-align:center;
 }
+
+.container{
+    margin-bottom:-300px;
+}

@@ -19,6 +19,33 @@ $showInfo=mysqli_query($conn,$sql);
 
 ?>
 
+<script>
+
+    function showCart() {
+        var xhttp = new XMLHttpRequest();
+        var r;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                r = this.responseText;
+                var str1 = "CART(";
+                var str2 = ")";
+                r = str1.concat(r,str2);
+                document.getElementById('cartButton').innerText = r;   
+
+            }
+        };
+        xhttp.open("GET", "noOfCartProducts.php?", true);
+        xhttp.send(); 
+
+    }
+
+</script>
+
+<script>
+    showCart(); 
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">

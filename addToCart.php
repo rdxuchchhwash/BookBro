@@ -4,7 +4,7 @@ require_once 'db/db_init.php' ;
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-    print_r($GLOBALS);
+
     $bookID = $_GET['bk_id'];
     $ssid=session_id();
     //if user logged in then $flag=1 otherwise 0

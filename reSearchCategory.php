@@ -77,22 +77,25 @@ include 'includes/navigation.php';
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
-                <p class="price">Our Price: BDT <?php echo $S["price"]; ?></p>
 
-                <?php $book_id=$S["id"]; ?>
+                <p class="price"><span id=spnprice>Our Price : BDT <?php echo $S["price"]; ?></span></p>
 
-                <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
+                </p><span id="qtyavail"> Quantity Available : <?php echo $S["quantity"]; ?></span><br>
 
-                <button type="button" id="demo" class="btn btn-info btn-xs" onclick="addProduct(<?php echo $book_id ?>)">
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
-                </button>
-            </div>
-            <?php endwhile; ?>
+            <?php $book_id=$S["id"]; ?>
 
+            <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
+
+            <button type="button" id="demo" class="btn btn-info btn-xs" onclick="addProduct(<?php echo $book_id ?>)">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
+            </button>
         </div>
-    </div>
+        <?php endwhile; ?>
 
-    <div class="col-md-2"></div>
+    </div>
+</div>
+
+<div class="col-md-2"></div>
 
 </div>
 <?php include 'includes/footer.php'; ?>

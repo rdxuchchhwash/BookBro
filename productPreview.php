@@ -37,6 +37,30 @@ $bookID = $_GET['bk_id'];
 </script>
 
 <script>
+    function addWishlist(str) {
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var v=this.responseText;
+                if(v=="Exist")
+                {
+                    alert("This Book Is Already In Wishlist");
+
+                }
+                else{
+                    alert("Book Added To Wishlist");
+                }
+            }
+        };
+        xmlhttp.open("GET", "addToWishlist.php?bk_id=" + str , true);
+        xmlhttp.send();
+
+        // document.getElementById('cartButton').innerText = str;
+    }
+</script>
+
+<script>
 
     function showCart() {
         var xhttp = new XMLHttpRequest();
@@ -103,7 +127,11 @@ mysqli_query($conn,$sql);
             <!--  -->
             <div class="section" style="padding-bottom:20px;">
                 <button class="btn btn-success" onclick="addProduct(<?php echo"'$bookID'"; ?>)"><span style="margin-right:20px" class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>ADD TO CART</button>
-            </div>                                        
+            </div>  
+
+            <div class="section" style="padding-bottom:20px;">
+                <button class="btn btn-info" onclick="addWishlist(<?php echo"'$bookID'"; ?>)"><span style="margin-right:20px" aria-hidden="true"></span>ADD TO WISHLIST</button>
+            </div>   
         </div>                              
 
         <legend id=des>DESCRIPTION</legend>
@@ -144,6 +172,12 @@ mysqli_query($conn,$sql);
             </table>
         </div>
 
+        <legend id=des>WRITE REVIEWS</legend>
+        <div class="custReviewHeader">
+        <ul class="list-inline list-unstyled pull-left">
+            <li>
+          </li></ul></div><input type="text" name="description" class="form-control" placeholder="Write Your Review" >
+        <button type="button" class="btn btn-warning">Warning</button>
     </div>
 </div>        
 

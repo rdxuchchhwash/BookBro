@@ -141,3 +141,17 @@ li.dropdown:hover > .dropdown-menu {
     margin-top: 2px;
     border-radius:5px;
 }
+
+#qtyavail{
+    font-family: initial;
+}
+#spnprice{
+    font-family: initial;
+}
+
+#odpicimg{
+    margin-top:0px;
+}
+#odpicr{
+    padding-right: 4px;
+}

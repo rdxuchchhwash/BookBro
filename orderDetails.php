@@ -45,7 +45,6 @@ if (session_status() == PHP_SESSION_NONE) {
 <script>
     showCart(); 
 </script>
-
 <div class="container">
     <div class="row">
 
@@ -79,17 +78,20 @@ if (session_status() == PHP_SESSION_NONE) {
                     <tr>
                         <td class="col-sm-8 col-md-8">
                             <div class="media">
-                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<?php echo $S["img_path"]; ?>" style="width: 72px; height: 72px;"> </a>
+                                <a class="thumbnail pull-left" href="#" id="odpicr"> <img class="media-object" id="odpicimg" src="<?php echo $S["img_path"]; ?>" style="width: 80px; height: 100px;"> </a>
                                 <div class="media-body">
                                     <h4 class="media-heading"><?php echo $S["bk_name"]; ?></h4>
-                                    <h5 class="media-heading"> by <?php echo $S["author"]; ?></h5>
-                                    <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                    <h5 class="media-heading" style="font-family:initial;"> by <?php echo $S["author"]; ?></h5>
+                                    
+                                    <span style="font-family:initial;">Available Quantity:<?php echo $S["quantity"]; ?> </span><br>
+                                    <span style="font-family:initial;">Status: </span><span class="text-success"><strong>In Stock</strong></span><br>
                                 </div>
                             </div>
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
                             <form action="update_qty.php" method="post">
                                 <input type="text" class="form-control" name="bk_qty" value="<?php echo $S["book_qty"]; ?>">
+                                <input type="hidden" name="availqty" value="<?php echo $S["quantity"]; ?>" />
                                 <button type="submit" class="btn btn-primary btn-sm" id="btnUpdate" name="book_id" value ="<?php echo $book_id; ?>">UPDATE</button> <span id="txtHint"></span>
                             </form>
 

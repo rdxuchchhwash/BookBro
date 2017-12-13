@@ -73,11 +73,17 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php
             $sql = "select * from books n, featured_books f where n.id=f.book_id";
             $catquery=mysqli_query($conn,$sql);
-            ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
+            ?> 
+
+            <?php while($S=mysqli_fetch_assoc($catquery)):?>
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>
+
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
-                <p class="price">Our Price: BDT <?php echo $S["price"]; ?></p>
+
+                <p class="price"><span id=spnprice>Our Price : BDT <?php echo $S["price"]; ?></span></p>
+
+                <span id="qtyavail"> Quantity Available : <?php echo $S["quantity"]; ?></span> <br>
 
                 <?php $book_id=$S["book_id"]; ?>
 

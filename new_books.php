@@ -73,7 +73,11 @@ include 'includes/navigation.php';
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>
                 <img src="<?php echo $S["img_path"]; ?>" alt="<?php echo $S["bk_name"]; ?>" class="img-thumb " height="200" width="200"/>
-                <p class="price">Our Price: $<?php echo $S["price"]; ?></p>
+
+
+                <p class="price"><span id=spnprice>Our Price : BDT <?php echo $S["price"]; ?></span></p>
+
+                <span id="qtyavail"> Quantity Available : <?php echo $S["quantity"]; ?></span><br>
 
                 <?php $book_id=$S["id"]; ?>
 

@@ -1,31 +1,36 @@
-<?php 
+<pre><?php 
 require_once 'db/db_init.php' ; 
-
-//tushar_work
 
 session_start();
 //echo session_id();
-    $cartID = $_POST['book_id'];
-    $newQty = $_POST['bk_qty'];
-    $ssid=session_id();
-    
-    echo $cartID;
-    echo $newQty;
+$cartID = $_POST['book_id'];
+$newQty = $_POST['bk_qty'];
+$availqty= $_POST['availqty'];
+$ssid=session_id();
 
 
-    if($newQty>0)
-    {   
- 
-        $sql = "update tempcart set book_qty=$newQty where id=$cartID";
-        mysqli_query($conn,$sql);
-    }
-    else
-    {   
-        $sql = "update tempcart set book_qty=1 where id=$cartID";
-        mysqli_query($conn,$sql);
-        header("Location: orderDetails.php");
-    }
+
+if($newQty>0 && $newQty<$availqty)
+{   
+    $sql = "update tempcart set book_qty=$newQty where id=$cartID";
+    mysqli_query($conn,$sql);
+}
+else if($newQty==1)
+{   
+    $sql = "update tempcart set book_qty=1 where id=$cartID";
+    mysqli_query($conn,$sql);
     header("Location: orderDetails.php");
-    
-    
+}
+
+else
+{
+    echo "<script>
+alert('Given Quantity is Bigger than Avaialble Quantity');
+window.location.href='orderDetails.php';
+</script>";
+}
+//header("Location: orderDetails.php");
+
+
 ?>
+</pre>
