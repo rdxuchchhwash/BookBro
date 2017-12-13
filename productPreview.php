@@ -1,6 +1,8 @@
 <?php 
 require_once 'db/db_init.php' ; 
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include 'includes/head.php'; 
 include 'includes/navigation.php';
 
@@ -43,7 +45,11 @@ $bookID = $_GET['bk_id'];
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var v=this.responseText;
-                if(v=="Exist")
+                if(v=="notLoggedIn")
+                {
+                    alert("For Adding It To Wishlist You Have To Login");
+                }
+                else if(v=="Exist")
                 {
                     alert("This Book Is Already In Wishlist");
 
@@ -130,8 +136,9 @@ mysqli_query($conn,$sql);
             </div>  
 
             <div class="section" style="padding-bottom:20px;">
-                <button class="btn btn-info" onclick="addWishlist(<?php echo"'$bookID'"; ?>)"><span style="margin-right:20px" aria-hidden="true"></span>ADD TO WISHLIST</button>
+                <button class="btn btn-info" id="wish" onclick="addWishlist(<?php echo"'$bookID'"; ?>)"><span style="margin-right:20px" aria-hidden="true"></span>ADD TO WISHLIST</button>
             </div>   
+
         </div>                              
 
         <legend id=des>DESCRIPTION</legend>
@@ -171,13 +178,19 @@ mysqli_query($conn,$sql);
                 </tbody>
             </table>
         </div>
-
-        <legend id=des>WRITE REVIEWS</legend>
-        <div class="custReviewHeader">
-        <ul class="list-inline list-unstyled pull-left">
-            <li>
-          </li></ul></div><input type="text" name="description" class="form-control" placeholder="Write Your Review" >
-        <button type="button" class="btn btn-warning">Warning</button>
+            <form action="writeReview.php" method="POST">
+                 <?php if($_SESSION['login_status']=="success"){echo "
+            <div class=\"section\" style=\"padding-bottom:20px;\">
+                <input type=\"text\" name=\"review\" id=\"review\" class=\"form-control\"  >
+            </div>  
+            <input type=\"hidden\" name=\"book_id\" value=\"$bookID\"/>";}
+                ?>
+            <?php if($_SESSION['login_status']=="success"){echo "
+            <div class=\"section\" style=\"padding-bottom:20px;\">
+                <button class=\"btn btn-info\" id=\"wish\" type=\"submit\"><span style=\"margin-right:20px\" aria-hidden=\"true\"></span>Write Review</button>
+            </div>  ";}
+                ?>
+            </form>
     </div>
 </div>        
 

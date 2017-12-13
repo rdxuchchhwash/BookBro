@@ -10,10 +10,11 @@ $ssid=session_id();
 
 
 
-if($newQty>0 && $newQty<$availqty)
+if($newQty>0 && $newQty<=$availqty)
 {   
     $sql = "update tempcart set book_qty=$newQty where id=$cartID";
     mysqli_query($conn,$sql);
+    header("Location: orderDetails.php");
 }
 else if($newQty==1)
 {   
@@ -29,7 +30,7 @@ alert('Given Quantity is Bigger than Avaialble Quantity');
 window.location.href='orderDetails.php';
 </script>";
 }
-//header("Location: orderDetails.php");
+
 
 
 ?>

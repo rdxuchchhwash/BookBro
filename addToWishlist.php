@@ -4,11 +4,9 @@ require_once 'db/db_init.php' ;
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if ($_SESSION['login_status']!="success"){
-    header("location:home.php");
-    exit();
-}
 
+if (isset($_SESSION['email']) && $_SESSION['login-status']=="success"){
+    
 $bookID = $_GET['bk_id'];
 $userMail=$_SESSION['email'];
 
@@ -29,4 +27,12 @@ else{
     mysqli_query($conn,$sql);
     echo "Not Exist";
 }
+
+
+}
+
+else{
+    echo "notLoggedIn";
+}
+
 ?>

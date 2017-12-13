@@ -73,6 +73,11 @@ img {
 text-align:center;
 }
 
-.container{
-    margin-bottom:-300px;
+
+#review{
+    padding: 6px 240px;
+}
+
+#wish{
+    border-radius: 0px;
 }
