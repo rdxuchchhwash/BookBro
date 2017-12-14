@@ -31,8 +31,9 @@ if (session_status() == PHP_SESSION_NONE) {
         $result=mysqli_query($conn,$sql);
         $type=mysqli_fetch_assoc($result);
         $t=$type["book_type"];
+        $price=$type["price"];
         
-        $sql = "insert into tempcart (session_id,book_id,book_type,book_qty) values('$ssid','$bookID','$t',1)";
+        $sql = "insert into tempcart (session_id,book_id,book_type,book_qty,book_price) values('$ssid','$bookID','$t',1,'$price')";
         mysqli_query($conn,$sql);
     }
     

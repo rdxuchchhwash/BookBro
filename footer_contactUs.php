@@ -36,7 +36,7 @@ include '/includes/navigation.php';
             
             <textarea cols="48" rows="5" name="message" id="message" class="message" placeholder="Message..." validation="required" ></textarea><br /><br />
             
-            <input type="submit" value="Send" size="25">
+            <input type="submit"  class="btn btn-info"  value="Send" size="25">
             
         </tr>
     </table>
