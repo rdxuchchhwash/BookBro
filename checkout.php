@@ -5,7 +5,7 @@ require_once 'db/db_init.php' ;
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+print_r($_SESSION);
 if($_SESSION["login_status"]=="reset")
 {   
     $_SESSION["login_status"]="continueToCheckout";
@@ -13,65 +13,59 @@ if($_SESSION["login_status"]=="reset")
 }
 
 else if($_SESSION["login_status"]=="success")
-{   $ptotal=0;
+{   
+
+    $date=date("Y-m-d");
+    $ptotal=0;
     $sql = "SELECT * FROM shipment ORDER BY ID DESC LIMIT 1"; 
     $result=mysqli_query($conn,$sql);
     $type=mysqli_fetch_assoc($result);   
     $count=$type["id"];
     $count++;
-    
+
 
     $sess=session_id();
-    $email=$_SESSION["email"];
-    $sql = "select * from tempcart where session_id=$sess";
+    $userID=$_SESSION["user_id"];
+    $stockQty=0;
+
+    $sql = "select * from tempcart where session_id='$sess'";
     $result=mysqli_query($conn,$sql);
-    $products=mysqli_fetch_assoc($result);
-    $book_id=$products["book_id"];
-    $book_type=$products["book_type"];
-    $book_qty=$products["book_qty"];
-    $book_price=$products["book_price"];
-    $date=date("Y-m-d");
-    $temp=$book_qty*$book_price;
-    $ptotal+=$temp;
-    $sql = "insert into orderdetails (order_no,book_id,book_type,book_price,quantity,date,customerMail) values('$count','$book_id','$book_type','$book_qty','$book_price','$date')";
+    while($products=mysqli_fetch_assoc($result))
+    {
+
+        $book_id=$products["book_id"];
+        $book_type=$products["book_type"];
+        $book_qty=$products["book_qty"];
+        $book_price=$products["book_price"];
+
+        $temp=$book_qty*$book_price;
+        $ptotal+=$temp;
+
+        $sql1 = "insert into orderdetails (order_no,book_id,book_type,book_price,quantity,date,customerID) values('$count','$book_id','$book_type','$book_price','$book_qty','$date','$userID')";
+        mysqli_query($conn,$sql1);
+
+        $sql2 = "select quantity from books where id='$book_id'";
+        $result1=mysqli_query($conn,$sql2);
+        $qty=mysqli_fetch_assoc($result1);
+        $stockQty=$qty['quantity'];
+        $stockQty=$stockQty-$book_qty;
+        echo $stockQty;
+
+        $sql3 = "update books set quantity='$stockQty' where id='$book_id'";
+        mysqli_query($conn,$sql3);
+
+    }
+
+    $sql = "insert into shipment (order_id,status,total_cost,customerID,date) values('$count','PENDING','$ptotal','$userID','$date')";
     mysqli_query($conn,$sql);
-    
-    $sql = "insert into shipment (order_id,status,total_cost,address,contact_no,date) values('$count','PENDING','$ptotal','address','$book_price','$date')";
+
+    $sql = "delete from tempcart where session_id='$sess'";
     mysqli_query($conn,$sql);
+
+
+    echo '<script>alert("Your Order Has Been Placed & Will Be Delivered Withing 3 Days.For Any Query Contact +8801631666080")</script>';
+    echo '<script>window.location = "orderDetails.php";</script>';
 }
 
-}
+
 ?>    
-
-
-$sql = "select book_qty from tempcart where book_id=$bookID and session_id='$ssid'";
-$result=mysqli_query($conn,$sql);
-$qty=mysqli_fetch_assoc($result);
-
-
-$q=$qty["book_qty"];
-if($q)
-{   
-++$q;
-$sql = "update tempcart set book_qty=$q where book_id=$bookID and session_id='$ssid'";
-mysqli_query($conn,$sql);
-}
-else
-{   
-$sql = "select * from books where id=$bookID";
-$result=mysqli_query($conn,$sql);
-$type=mysqli_fetch_assoc($result);
-$t=$type["book_type"];
-
-$sql = "insert into tempcart (session_id,book_id,book_type,book_qty) values('$ssid','$bookID','$t',1)";
-mysqli_query($conn,$sql);
-}
-
-
-$s=$_FILES['bookCover']['tmp_name'];
-$sql = "SELECT * FROM books ORDER BY ID DESC LIMIT 1"; 
-$result=mysqli_query($conn,$sql);
-$type=mysqli_fetch_assoc($result);
-
-$count=$type["id"];
-$count++;
