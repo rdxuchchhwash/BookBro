@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2017 at 09:39 PM
+-- Generation Time: Dec 14, 2017 at 05:08 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -94,24 +94,16 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `bk_name`, `category`, `author`, `description`, `quantity`, `price`, `img_path`, `date`, `country`, `language`, `book_type`, `no_of_views`) VALUES
-(1, 'Misir Ali Somogro', 'NOVELS', 'JAFOR IQBAL', 'ASDASDASDASDASDASDAD', 10, 200, 'images/bk1.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 356),
-(2, 'Lilabotir Mrittu', 'STORY', 'HUMAYUN AHMED', 'adasdasdasd', 20, 250, 'images/bk2.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 11),
-(3, 'Akjon Himu Abong Kyekti ', 'NOVELS', 'JAFOR IQBAL', 'asadadasdasd', 15, 240, 'images/bk3.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 22),
-(4, 'Abong Himu', 'NOVELS', 'JAFOR IQBAL', 'szadfdsfs', 15, 350, 'images/bk4.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 10),
+(1, 'Misir Ali Somogro', 'NOVELS', 'JAFOR IQBAL', 'ASDASDASDASDASDASDAD', 10, 200, 'images/bk1.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 400),
+(2, 'Lilabotir Mrittu', 'STORY', 'HUMAYUN AHMED', 'adasdasdasd', 20, 250, 'images/bk2.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 16),
+(3, 'Akjon Himu Abong Kyekti ', 'NOVELS', 'JAFOR IQBAL', 'asadadasdasd', 15, 240, 'images/bk3.jpg', '2017-12-05', 'BANGLADESH', 'BANGLA', 'NEW', 24),
+(4, 'Abong Himu', 'NOVELS', 'JAFOR IQBAL', 'szadfdsfs', 15, 350, 'images/bk4.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 13),
 (5, 'Nishithini', 'STORY', 'HUMAYUN AHMED', 'dasdasdas', 25, 320, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 23),
-(6, 'Lilabotir Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 1),
-(7, 'Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 64),
+(6, 'Lilabotir Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 2),
+(7, 'Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 70),
 (8, 'Lilabotir 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 4),
-(9, 'Jajabor Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 11),
-(10, 'Amar golpo', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 1),
-(19, 'Nana Vai', 'STORY', 'JAFOR IQBAL', 'Comedy Story BOOK', 10, 150, '11.jpg', '2017-12-13', 'Bangladesh', 'BANGLA', 'OLD', 0),
-(20, 'Nana Vai', 'HORROR', 'JAFOR IQBAL', 'Comedy Story BOOK', 10, 150, '20.jpg', '2017-12-13', 'Bangladesh', 'BANGLA', 'OLD', 0),
-(21, 'bhoot', 'EDUCATION', 'KAZI NAZRUL ISLAM', 'Comedy Story BOOK', 1, 150, '21.jpg', '2017-12-13', 'Bangladesh', 'BANGLA', 'OLD', 0),
-(22, 'Nana Vai', 'NOVELS', 'HUMAYUN AHMED', 'ank voy', 10, 1000, '22.jpg', '2017-12-13', 'Bangladesh', 'BANGLA', 'OLD', 0),
-(23, 'bhoot', 'NOVELS', 'HUMAYUN AHMED', 'Comedy Story BOOK', 10, 1000, '23.jpg', '2017-12-13', 'Bangladesh', 'HINDI', 'OLD', 0),
-(24, 'bhoot', 'HORROR', 'KAZI NAZRUL ISLAM', 'ank voy', 10, 1000, '24.jpg', '2017-12-13', 'Bangladesh', 'HINDI', 'OLD', 0),
-(25, 'bhoot', 'NOVELS', 'HUMAYUN AHMED', 'ank voy', 10, 1000, '25.jpg', '2017-12-13', 'Bangladesh', 'HINDI', 'OLD', 0),
-(26, 'bhoot', 'NOVELS', 'HUMAYUN AHMED', 'ank voy', 10, 1000, '26.jpg', '2017-12-13', 'Bangladesh', 'HINDI', 'OLD', 0);
+(9, 'Jajabor Mrittu 2', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 12),
+(10, 'Amar golpo', 'STORY', 'HUMAYUN AHMED', 'dfsxgzdf', 20, 400, 'images/bk5.jpg', '2017-12-06', 'BANGLADESH', 'BANGLA', 'NEW', 1);
 
 -- --------------------------------------------------------
 
@@ -160,20 +152,6 @@ INSERT INTO `featured_books` (`id`, `bk_name`, `book_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `new_bk_transactions`
---
-
-CREATE TABLE `new_bk_transactions` (
-  `user_id` int(11) NOT NULL,
-  `book_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `date` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `oldbookstat`
 --
 
@@ -188,16 +166,18 @@ CREATE TABLE `oldbookstat` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `old_bk_transactions`
+-- Table structure for table `orderdetails`
 --
 
-CREATE TABLE `old_bk_transactions` (
-  `seller_user_id` int(11) NOT NULL,
-  `book_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `buyer_user_id` int(11) NOT NULL,
-  `date` int(11) NOT NULL
+CREATE TABLE `orderdetails` (
+  `id` int(10) NOT NULL,
+  `order_no` int(10) NOT NULL,
+  `book_id` int(10) NOT NULL,
+  `book_type` varchar(10) NOT NULL,
+  `book_price` int(10) NOT NULL,
+  `quanitity` int(10) NOT NULL,
+  `date` date NOT NULL,
+  `customerMail` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -221,7 +201,23 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`reviewID`, `userMail`, `book_id`, `review_des`, `username`, `date`, `status`) VALUES
-(13, 'rdx.uchchhwash@gmail.com', 2, 'What A Interesting Book', 'Uchchhwash Chakraborty', '2017-12-13', 0);
+(13, 'rdx.uchchhwash@gmail.com', 2, 'What A Interesting Book', 'Uchchhwash Chakraborty', '2017-12-13', 0),
+(14, 'rdx.uchchhwash@gmail.com', 1, 'A very Good book', 'Uchchhwash Chakraborty', '2017-12-13', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment`
+--
+
+CREATE TABLE `shipment` (
+  `id` int(11) NOT NULL,
+  `order_id` int(10) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `total_cost` int(10) NOT NULL,
+  `customerMail` varchar(50) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -235,18 +231,16 @@ CREATE TABLE `tempcart` (
   `book_id` int(11) NOT NULL,
   `book_type` varchar(20) NOT NULL,
   `book_qty` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL
+  `book_price` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tempcart`
 --
 
-INSERT INTO `tempcart` (`id`, `session_id`, `book_id`, `book_type`, `book_qty`, `user_id`) VALUES
-(404, '5snfh6mirmobftkr6bmapurq86', 7, 'NEW', 2, NULL),
-(405, '5snfh6mirmobftkr6bmapurq86', 9, 'NEW', 1, NULL),
-(406, '5snfh6mirmobftkr6bmapurq86', 1, 'NEW', 1, NULL),
-(411, 'lck3flhq1ckhhvctn0la8k50g6', 2, 'NEW', 1, NULL);
+INSERT INTO `tempcart` (`id`, `session_id`, `book_id`, `book_type`, `book_qty`, `book_price`) VALUES
+(479, 'pvfqrc7s3toom226f79jpc0mb7', 1, 'NEW', 2, 200),
+(480, 'pvfqrc7s3toom226f79jpc0mb7', 7, 'NEW', 1, 400);
 
 -- --------------------------------------------------------
 
@@ -308,7 +302,10 @@ INSERT INTO `wishlist` (`id`, `userMail`, `book_id`, `status`) VALUES
 (52, 'rdx.uchchhwash@gmail.com', 1, 0),
 (53, 'rdx.uchchhwash@gmail.com', 3, 0),
 (54, 'rdx.uchchhwash@gmail.com', 1, 0),
-(55, 'rdx.uchchhwash@gmail.com', 2, 1);
+(55, 'rdx.uchchhwash@gmail.com', 2, 1),
+(56, 'rdx.uchchhwash@gmail.com', 1, 1),
+(57, 'rdx.uchchhwash@gmail.com', 4, 1),
+(58, 'rdx.uchchhwash@gmail.com', 7, 1);
 
 --
 -- Indexes for dumped tables
@@ -352,10 +349,23 @@ ALTER TABLE `oldbookstat`
   ADD UNIQUE KEY `old_book_id` (`old_book_id`);
 
 --
+-- Indexes for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`reviewID`);
+
+--
+-- Indexes for table `shipment`
+--
+ALTER TABLE `shipment`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `tempcart`
@@ -403,7 +413,7 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -415,15 +425,25 @@ ALTER TABLE `category`
 ALTER TABLE `featured_books`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `shipment`
+--
+ALTER TABLE `shipment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tempcart`
 --
 ALTER TABLE `tempcart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=412;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=484;
 --
 -- AUTO_INCREMENT for table `user_info`
 --
@@ -438,7 +458,7 @@ ALTER TABLE `user_login`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
