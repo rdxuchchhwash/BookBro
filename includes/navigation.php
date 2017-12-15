@@ -84,7 +84,7 @@ $authorquery=mysqli_query($conn,$sql);
             if($_SESSION["login_status"]=="success"){echo '
                 <li><a href="sellBook.php">SELL BOOK</a></li> ';} ?>
 
-            <form class="navbar-form navbar-left">
+            <form action="submitSearch.php" method="POST" class="navbar-form navbar-left">
                 <div class="input-group">
                     <input type="text" class="form-control" name="livesearch" id="livesearch" placeholder="Search"><div id="results"></div>
                     <div class="input-group-btn">

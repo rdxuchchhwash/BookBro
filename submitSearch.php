@@ -1,8 +1,4 @@
 <?php 
-
-
-$category_name = $_GET['cat'];
-
 require_once 'db/db_init.php' ; 
 include 'includes/head.php'; 
 include 'includes/navigation.php';
@@ -68,10 +64,11 @@ include 'includes/navigation.php';
 
     <div class="col-md-8">
         <div class="row">
-            <h2 class="text-center">Books By Category</h2>
+            <h2 class="text-center">Books By Search Results</h2>
 
             <?php
-            $sql = "select * from books where category='$category_name' and book_type='NEW'";
+            $searchString=$_POST['livesearch'];
+            $sql = "select * from books where bk_name='$searchString'";
             $catquery=mysqli_query($conn,$sql);
             ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
             <div class="col-md-3">
@@ -103,6 +100,4 @@ include 'includes/navigation.php';
 
 </body>
 </html>
-
-
 
