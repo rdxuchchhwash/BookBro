@@ -62,12 +62,13 @@ if(strlen($language)==0){
 
 
 $s=$_FILES['bookCover']['tmp_name'];
-$sql = "SELECT * FROM books ORDER BY ID DESC LIMIT 1"; 
+$sql = "SELECT id FROM books ORDER BY ID DESC LIMIT 1"; 
 $result=mysqli_query($conn,$sql);
 $type=mysqli_fetch_assoc($result);
 
 $count=$type["id"];
 $count++;
+echo $count;
 $n=0;
 $date=date("Y-m-d");
 
@@ -93,11 +94,14 @@ $sellerName=$info['full_name'];
 if($flag==1)
 {
     move_uploaded_file($s,"images/".$n);
+    $n="images/".$n;
     $sql = "insert into books (bk_name,category,author,description,quantity,price,img_path,date,country,language,book_type,no_of_views) values('$bookName','$category','$author','$description',$qty,$price,'$n','$date','$country','$language','OLD',0)";
     mysqli_query($conn,$sql);
 
     $sql = "insert into oldbookstat (old_book_id,book_status,old_book_seller_mail,seller_contact,seller_name) values('$count','PENDING','$email','$sellerCont','$sellerName')";
     mysqli_query($conn,$sql);
+ 
+    print_r($GLOBALS);
     echo '<script>alert("Sell Book Submitted.Waiting For Admin Approval")</script>';
     echo '<script>window.location = "sellBook.php";</script>';
 

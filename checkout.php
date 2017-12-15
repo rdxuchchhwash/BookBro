@@ -55,7 +55,7 @@ else if($_SESSION["login_status"]=="success")
         mysqli_query($conn,$sql3);
 
     }
-
+    $ptotal+=50;
     $sql = "insert into shipment (order_id,status,total_cost,customerID,date) values('$count','PENDING','$ptotal','$userID','$date')";
     mysqli_query($conn,$sql);
 

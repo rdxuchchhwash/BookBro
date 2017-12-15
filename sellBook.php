@@ -45,7 +45,8 @@ if (session_status() == PHP_SESSION_NONE) {
             <div class="account-wall">
 
                 <form class="form-sellBook" action=sellBookSubmit.php method="POST" enctype="multipart/form-data">
-                    <input type="text" name="bk_name" class="form-control" placeholder="Full Name" required autofocus>
+                    
+                    <input type="text" name="bk_name" class="form-control" placeholder="Book Name" required autofocus>
 
                     <input type="text" name="description" class="form-control" placeholder="Enter the Description" required>
 

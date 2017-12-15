@@ -69,7 +69,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
                     $showCarts=mysqli_query($conn,$sql);
 
-                    
+
                     while($S=mysqli_fetch_assoc($showCarts)):
                     $total=$S["book_qty"]*$S["price"];
                     $book_id=$S["id"];
@@ -82,15 +82,28 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <div class="media-body">
                                     <h4 class="media-heading"><?php echo $S["bk_name"]; ?></h4>
                                     <h5 class="media-heading" style="font-family:initial;"> by <?php echo $S["author"]; ?></h5>
-                                    
+
                                     <span style="font-family:initial;">Available Quantity:<?php echo $S["quantity"]; ?> </span><br>
-                                    <span style="font-family:initial;">Status: </span><span class="text-success"><strong>In Stock</strong></span><br>
+                                    <span style="font-family:initial;">Status: </span><span class="text-success"><strong>
+                                    <?php if($S["quantity"]>0)
+                                    echo "In Stock";
+                                    else
+                                        echo "Out Of Stock";
+                                    ?>
+                                    </strong></span><br>
                                 </div>
                             </div>
                         </td>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
                             <form action="update_qty.php" method="post">
-                                <input type="text" class="form-control" name="bk_qty" value="<?php echo $S["book_qty"]; ?>">
+                                <input type="text" class="form-control" name="bk_qty" value="<?php $availQty=$S["quantity"];
+                                       $orderQty=$S["book_qty"];
+                                       if($availQty>$orderQty){
+                                           echo $orderQty;
+                                       }
+                                       else{  echo $availQty;
+                                           }
+                                       ?>">
                                 <input type="hidden" name="availqty" value="<?php echo $S["quantity"]; ?>" />
                                 <button type="submit" class="btn btn-primary btn-sm" id="btnUpdate" name="book_id" value ="<?php echo $book_id; ?>">UPDATE</button> <span id="txtHint"></span>
                             </form>

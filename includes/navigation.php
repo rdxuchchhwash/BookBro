@@ -78,7 +78,7 @@ $authorquery=mysqli_query($conn,$sql);
 
             <li><a href="new_books.php">NEW BOOKS</a></li>
 
-            <li><a href="#">OLD BOOKS</a></li>
+            <li><a href="reSearchOldBooks.php">OLD BOOKS</a></li>
 
             <?php
             if($_SESSION["login_status"]=="success"){echo '

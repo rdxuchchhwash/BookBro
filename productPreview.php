@@ -31,7 +31,19 @@ $bookID = $_GET['bk_id'];
                 showCart();
             }
         };
+        var avaqty = document.getElementById("availQty").innerText;
         var q=document.getElementById("txtQty").value; 
+        if(avaqty == 0)
+        {
+            alert("This Book Is Out Of Stock");
+            return;
+        }
+
+        else if(q>avaqty){
+            alert("Given Quantity Must Be Less Or Equal Than Available Quantity");
+            return;
+        }
+
         xmlhttp.open("GET", "productPreviewAdd.php?bk_id=" + str + "&qty="+ q, true);
         xmlhttp.send();
 
@@ -123,7 +135,7 @@ mysqli_query($conn,$sql);
 
             <!-- Avaialble Quantity -->
             <h6 class="title-quantity"><small>AVAILABLE QUANTITY</small></h6>
-            <h3 style="margin-top:0px;"> <?php echo $S["quantity"]; ?></h3>
+            <h3 style="margin-top:0px;"> <span id="availQty"><?php echo $S["quantity"]; ?></span></h3>
 
             <!-- Details Part-->
 
@@ -137,8 +149,11 @@ mysqli_query($conn,$sql);
             </div>  
 
             <div class="section" style="padding-bottom:20px;">
-                <button class="btn btn-info" id="wish" onclick="addWishlist(<?php echo"'$bookID'"; ?>)"><span style="margin-right:20px" aria-hidden="true"></span>ADD TO WISHLIST</button>
+                <button class="btn btn-info" id="wish" onclick="addWishlist(<?php echo"'$bookID'"; ?>)"><span style="margin-right:20px" aria-hidden="true"></span>ADD TO WISHLIST</button><br>
+
+
             </div>   
+
 
         </div>                              
 
@@ -175,10 +190,25 @@ mysqli_query($conn,$sql);
                         <td><?php echo $S["language"]; ?></td>
 
                     </tr>
-
+                    <span id=sellContact><?php if($S["book_type"]=="OLD"){
+    $sql3 = "select * from oldbookstat where old_book_id=$bookID";
+    $detailquery=mysqli_query($conn,$sql3);
+    $seller=mysqli_fetch_assoc($detailquery);
+    $sellername=$seller['seller_name'];
+    $sellerContact=$seller['seller_contact'];
+    echo "<tr>";
+    echo "<th>Seller Name</th> <td>$sellername</td>";
+    echo "</tr>";
+    echo "<tr>";
+    echo "<th>Seller Contact</th> <td>$sellerContact</td> ";
+    echo "</tr>";
+}
+                        ?>
+                    </span>
                 </tbody>
             </table>
         </div>
+
         <form action="writeReview.php" method="POST">
             <?php if($_SESSION['login_status']=="success"){echo "
             <div class=\"section\" style=\"padding-bottom:20px;\">
@@ -202,13 +232,13 @@ mysqli_query($conn,$sql);
                 $sql = "select * from review where book_id='$bookID' and status=1";
                 $query=mysqli_query($conn,$sql);
                 ?> <?php while($reviews=mysqli_fetch_assoc($query)):?>
-                
+
                 <tr>
                     <th><?php echo $reviews["username"]; ?></th>
                     <td><?php echo $reviews["review_des"]; ?></td>
                 </tr>
-                
-                 <?php endwhile; ?>
+
+                <?php endwhile; ?>
             </tbody>
         </table>
     </div>

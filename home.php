@@ -18,7 +18,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 <!--Ajax CART START -->
 <script>
-    function addProduct(str) {
+    function addProduct(str,qty) {
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -26,6 +26,12 @@ if (session_status() == PHP_SESSION_NONE) {
                 showCart();
             }
         };
+     
+        if(qty == 0)
+            {
+                alert("This Book Is Out Of Stock");
+                return;
+            }
         xmlhttp.open("GET", "addToCart.php?bk_id=" + str, true);
         xmlhttp.send();
 
@@ -89,7 +95,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
                 <button type="button" class="btn btn-info btn-xs " onClick="document.location.href='productPreview.php?bk_id=<?php echo "$book_id;" ?>'" >Details</button>
 
-                <button type="button" id="demo" class="btn btn-info btn-xs" onclick="addProduct(<?php echo $book_id ?>)">
+                <button type="button" id="demo" class="btn btn-info btn-xs" onclick="addProduct(<?php echo $book_id ?>,<?php echo $S["quantity"] ?>)">
                     <span class="glyphicon glyphicon-shopping-cart"></span> Add To Cart
                 </button>
             </div>

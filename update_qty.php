@@ -23,6 +23,15 @@ else if($newQty==1)
     header("Location: orderDetails.php");
 }
 
+else if($newQty==0)
+{   
+    echo "<script>
+alert('Given Quantity Can Not Be 0');
+window.location.href='orderDetails.php';
+</script>";
+}
+
+
 else
 {
     echo "<script>

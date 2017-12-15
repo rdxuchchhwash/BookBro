@@ -62,7 +62,7 @@ if ($_SESSION['login_status']!="success"){
                         $show=0;//
                         $show1=0;//
                         $userID=$_SESSION["user_id"];
-                        $sql = "SELECT * from shipment s, orderdetails od where s.order_id=od.order_no and s.customerID='$userID'";
+                        $sql = "SELECT * from shipment s, orderdetails od where s.order_id=od.order_no and s.customerID='$userID' ORDER BY order_no DESC";
                         $result=mysqli_query($conn,$sql);
                         while($details=mysqli_fetch_assoc($result)):
                         ?> 
@@ -112,9 +112,11 @@ if ($_SESSION['login_status']!="success"){
                             {echo '<tr>
                             <td></td>
                             <td><h5>TOTAL</h5></td>
-                            <td class="text-left"><h5><strong>BDT';
+                            <td class="text-left"><h5><strong>BDT ';
                              echo $total; 
                              echo "</strong></h5></td>
+                             <td></td>
+                             <td></td>
                         </tr>";
                             } ?>	
                         <?php endwhile; ?>
