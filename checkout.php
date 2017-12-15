@@ -5,7 +5,7 @@ require_once 'db/db_init.php' ;
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-print_r($_SESSION);
+//print_r($_SESSION);
 if($_SESSION["login_status"]=="reset")
 {   
     $_SESSION["login_status"]="continueToCheckout";
