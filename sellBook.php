@@ -38,6 +38,21 @@ if (session_status() == PHP_SESSION_NONE) {
     showCart(); 
 </script>
 
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -45,7 +60,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <div class="account-wall">
 
                 <form class="form-sellBook" action=sellBookSubmit.php method="POST" enctype="multipart/form-data">
-                    
+
                     <input type="text" name="bk_name" class="form-control" placeholder="Book Name" required autofocus>
 
                     <input type="text" name="description" class="form-control" placeholder="Enter the Description" required>
@@ -55,7 +70,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <input type="text" name="price" class="form-control" placeholder="Enter the Price">
 
                     <input type="text" name="country" class="form-control" placeholder="Country  Name" required autofocus>
-                    
+
                     <input type="text" name="language" class="form-control" placeholder="Language" required autofocus>
 
                     <div class="form-group">
@@ -66,9 +81,9 @@ if (session_status() == PHP_SESSION_NONE) {
                             $catquery=mysqli_query($conn,$sql);
                             ?> 
                             <?php while($S=mysqli_fetch_assoc($catquery)):?>
-                           
+
                             <option><?php echo $S['category_name'] ;?></option>
-                            
+
                             <?php endwhile; ?>
 
                         </select>
@@ -92,10 +107,11 @@ if (session_status() == PHP_SESSION_NONE) {
 
                     <label class="btn-bs-file btn btn-primary" id="bkUpBt">
                         Browse
-                        <input type="file" name="bookCover" />
-                        
+                        <input type="file" name="bookCover"onchange="readURL(this);" />
                     </label>
-                     <img src="" class="img-thumbnail" style="width:200;height:200;">
+                    <img id="preview" src="http://placehold.it/180" alt="your image" />
+
+
                     <button class="btn btn-lg btn-primary btn-block" type="submit" name="signup" value="submit">
                         SELL BOOK</button>
 
@@ -108,11 +124,11 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 </div>
+
 <?php include 'includes/footer.php'; ?>
 <?php include 'includes/scrollbarHome.php'; ?>
 
 </body>
 </html>
-
 
 

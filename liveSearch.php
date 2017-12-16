@@ -7,7 +7,7 @@ if(isset($_POST["query"]))
 {
     $output = '';
     $query = "select * from books where bk_name like '%".
-        $_POST["query"]."%'";
+        $_POST["query"]."%' and book_type='NEW'";
     $result = mysqli_query($conn,$query);
     $output = '<ul class="list-unstyled">';
     if(mysqli_num_rows($result)>0)
