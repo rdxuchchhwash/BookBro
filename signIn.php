@@ -34,6 +34,39 @@ include 'includes/navigation.php';
         xhttp.open("GET", "noOfCartProducts.php?", true);
         xhttp.send(); 
     }
+    
+     function validate(){
+        var name= document.getElementById('name');
+        var pass= document.getElementById('pass');
+        var flag=true;
+        if(name.value.length==0|| pass.value.length==0){
+            if(name.value.length==0){
+                alert("Insert Email Address");
+                name.style.border= "solid 2px red";
+                name.focus();
+
+            }
+            if(pass.value.length==0){
+                alert("Insert Password!");
+
+                pass.style.border= "solid 2px red";
+                pass.focus();
+            }
+            flag=false;
+        }
+        if(name.value.length!=0){
+            name.style.border= "solid 2px steelblue";
+
+
+        }
+        if(pass.value.length!=0){
+            pass.style.border= "solid 2px steelblue";
+
+
+        }
+        return flag;
+     }
+
 
 </script>
 
@@ -48,9 +81,9 @@ include 'includes/navigation.php';
             <div class="account-wall">
                 <?php //print_r($GLOBALS); ?>
                 <form class="form-signin" action="signinss.php" method="POST">
-                    <input type="text" name="email" class="form-control" placeholder="Email" required autofocus>
-                    <input type="password" name="pass" class="form-control" placeholder="Password" required>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    <input type="text" name="email" class="form-control" placeholder="Email" id="name">
+                    <input type="password" name="pass" class="form-control" placeholder="Password" id="pass">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="return validate();">
                         Sign in</button>
                     <?php
                     if($_SESSION["login_status"]== "failed")

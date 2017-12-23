@@ -3,27 +3,34 @@ require_once '../db/db_init.php';
 include 'admin_index.php';
 ?>
 
-
-
+<head><title>Remove Category | BookBro</title></head>
 
 <div class="new">
 
-    <form action="#" enctype="multipart/form-data" method="post">
+    <form action="removeCategoryQuery.php"  method="post">
        <div class="first_block">
            
-        <h2>Update Category</h2>
+        <h2>Remove Category</h2>
         <hr>
-        <p>Category ID</p>
-        <input type="text" placeholder="Input Category ID here" name="catID" >
+          <p>Category ID</p>
+                   <div class="form-group">
+                        <select name="catID" class="form-control" id="category">
+                            <?php
+                            $sql = "select * from category";
+                            $catquery=mysqli_query($conn,$sql);
+                            ?> 
+                            <?php while($S=mysqli_fetch_assoc($catquery)):?>
+                           
+                            <option><?php echo $S['id'] ;?></option>
+                            
+                            <?php endwhile; ?>
+
+                        </select>
+                    </div> 
            
-        <input type="submit" value="Get Name" >
-           <br><br>
-           
-           
-        <p>Category Name</p>
-        <input type="text" placeholder="Category Name" name="catName" disabled>
+     
        
-        <input type="submit" value="Remove" style="background-color:#cc4128">
+        <input type="submit" onclick="return validate()" value="Remove" style="background-color:#cc4128">
        
 
 

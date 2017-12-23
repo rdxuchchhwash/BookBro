@@ -69,7 +69,14 @@ include 'includes/navigation.php';
             <?php
             $searchString=$_POST['livesearch'];
             $sql = "select * from books where bk_name='$searchString' and book_type='NEW'";
-            $catquery=mysqli_query($conn,$sql);
+			$catquery=mysqli_query($conn,$sql);
+			$count=0;
+			$count=mysqli_num_rows($catquery);
+			if($count==0)
+			{
+				$sql = "select * from books where author='$searchString' and book_type='NEW'";
+				$catquery=mysqli_query($conn,$sql);
+			}
             ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
             <div class="col-md-3">
                 <h4><?php echo $S["bk_name"]; ?></h4>

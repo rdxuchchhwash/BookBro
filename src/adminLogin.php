@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../db/db_init.php';
-include '../adminIncludes/head.php'
+include '../adminIncludes/head.php';
 
 ?>
 <script type="text/javascript">

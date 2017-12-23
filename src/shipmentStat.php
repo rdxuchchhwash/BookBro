@@ -8,20 +8,30 @@ include 'admin_index.php';
 
 <div class="new">
 
-    <form action="#" enctype="multipart/form-data" method="post">
+    <form action="shipmentStatQuery.php" method="post">
         <div class="first_block">
 
             <h2>SHIPMENT STATUS </h2>
             <hr>
-            <p>Shipment ID</p>
-            <input type="text" placeholder="Enter Shipment ID here" name="shipmentID" >
+           <p>Shipment ID</p>
+                   <div class="form-group">
+                        <select name="shipID" class="form-control">
+                            <?php
+                            $sql = "select * from shipment";
+                            $catquery=mysqli_query($conn,$sql);
+                            ?> 
+                            <?php while($S=mysqli_fetch_assoc($catquery)):?>
+                           
+                            <option><?php echo $S['id'] ;?></option>
+                            
+                            <?php endwhile; ?>
 
-            <input type="submit" value="Get Status" >
-            <br><br>
+                        </select>
+                    </div> 
 
 
             <p>Shipment Status</p>
-            <select name="author" class="form-control" id="author">
+            <select name="status" class="form-control" >
                 <option>PENDING</option>
                 <option>APPROVED</option>
                 <option>DECLINE</option>

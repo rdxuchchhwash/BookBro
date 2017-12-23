@@ -14,7 +14,6 @@ $authorquery=mysqli_query($conn,$sql);
 
 ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
         $('#livesearch').keyup(function(){
@@ -86,7 +85,7 @@ $authorquery=mysqli_query($conn,$sql);
 
             <form action="submitSearch.php" method="POST" class="navbar-form navbar-left">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="livesearch" id="livesearch" placeholder="Search"><div id="results"></div>
+                    <input type="text" class="form-control" name="livesearch" id="livesearch" placeholder="Search" autocomplete="off"><div id="results"></div>
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
@@ -146,6 +145,34 @@ $authorquery=mysqli_query($conn,$sql);
     </div>
 </nav>
 
+<!--Ajax CART Start -->
+<script>
+
+    function showCart() {
+        var xhttp = new XMLHttpRequest();
+        var r;
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                r = this.responseText;
+                var str1 = "CART(";
+                var str2 = ")";
+                r = str1.concat(r,str2);
+                document.getElementById('cartButton').innerText = r;   
+
+            }
+        };
+        xhttp.open("GET", "noOfCartProducts.php?", true);
+        xhttp.send(); 
+    }
+
+</script>
+
+<script>
+    showCart(); 
+</script>
+
+<!--Ajax CART END -->
 <!--Search Bar
 <div class="container">
     <div class="row">

@@ -84,9 +84,13 @@ if ($_SESSION['login_status']!="success"){
 
                                 <span style="font-family:initial;">Available Quantity:<?php echo $S["quantity"]; ?> </span><br>
 
-                                <span style="font-family:initial;">Status: </span>
-
-                                <span class="text-success"><strong>In Stock</strong></span><br>
+                                    <span style="font-family:initial;">Status: </span><span class="text-success"><strong>
+                                    <?php if($S["quantity"]>0)
+                                    echo "In Stock";
+                                    else
+                                        echo "Out Of Stock";
+                                    ?>
+                                    </strong></span><br>
 
                             </div>
                         </td>

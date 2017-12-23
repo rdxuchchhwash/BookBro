@@ -10,6 +10,7 @@
                         <a href="addNewBook.php"><li>ADD NEW BOOK</li></a>
                         <a href="updateBook.php"><li>UPDATE BOOK</li></a>
                         <a href="removeBook.php"><li>REMOVE BOOK</li></a>
+						<a href="featureBook.php"><li>ADD/REMOVE FEATURE BOOK</li></a>
 						<a href="oldBookStat.php"><li>ACCEPT/DECLINE OLD BOOK</li></a>
                         <a href="showAllNewBooks.php"><li>SHOW ALL NEW BOOKS</li></a>
 						<a href="showAllOldBooks.php"><li>SHOW ALL OLD BOOKS</li></a>

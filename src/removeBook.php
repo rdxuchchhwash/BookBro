@@ -4,23 +4,32 @@ include 'admin_index.php'
 
 
 ?>
+<head><title>Remove Admin | BookBro</title></head>
 <div class="new">
 
-    <form action="#" enctype="multipart/form-data" method="post">
+    <form action="removeBookQuery.php" enctype="multipart/form-data" method="post">
        <div class="first_block">
         <h2>Remove Book</h2>
         <hr>
         <p>Book ID</p>
-        <input type="number" placeholder="Enter Book ID here" name="bId" >
+         <select name="bookID" class="form-control" id="category">
+                    <?php
+                    $sql = "select * from books";
+                    $catquery=mysqli_query($conn,$sql);
+                    ?> 
+                    <?php while($S=mysqli_fetch_assoc($catquery)):?>
+
+                    <option><?php echo $S['id'] ;?></option>
+
+                    <?php endwhile; ?>
+
+                </select>
 
            <br><br>
            
         <input type="submit" value="Remove" style="background-color:#cc4128" >
 
     </div>
-    <div class="second_block">
-        
-        <img id="preview" src="http://placehold.it/180" alt="your image" />
         
              
         

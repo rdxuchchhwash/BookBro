@@ -1,9 +1,11 @@
 <?php 
 require_once 'db/db_init.php' ; 
-include '/includes/head.php'; 
-include '/includes/navigation.php';
+include 'includes/head.php'; 
+include 'includes/navigation.php';
 
 ?>
+
+
 
 <div id="headerWrapper">
     <div id="back-flower"></div>

@@ -1,7 +1,7 @@
 <?php 
 require_once 'db/db_init.php' ; 
-include '/includes/head.php'; 
-include '/includes/navigation.php';
+include 'includes/head.php'; 
+include 'includes/navigation.php';
 
 ?>
 <link rel="stylesheet" href="css/faq.css">

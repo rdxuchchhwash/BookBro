@@ -7,10 +7,10 @@ include 'includes/navigation.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
- if ($_SESSION['login_status']!="success"){
+if ($_SESSION['login_status']!="success"){
     header("location:home.php");
     exit();
-  }
+}
 
 ?>    
 
@@ -82,14 +82,18 @@ if (session_status() == PHP_SESSION_NONE) {
                                 <a class="thumbnail pull-left" href="#" id="odpicr"> <img class="media-object" id="odpicimg" src="<?php echo $S["img_path"]; ?>" style="width: 80px; height: 100px;"> </a>
                                 <div class="media-body">
                                     <h4 class="media-heading"><?php echo $S["bk_name"]; ?></h4>
-                                    
+
                                     <h5 class="media-heading" style="font-family:initial;"> by <?php echo $S["author"]; ?></h5>
 
                                     <span style="font-family:initial;">Available Quantity:<?php echo $S["quantity"]; ?> </span><br>
 
-                                    <span style="font-family:initial;">Status: </span>
-                                    
-                                    <span class="text-success"><strong>In Stock</strong></span><br>
+                                    <span style="font-family:initial;">Status: </span><span class="text-success"><strong>
+                                    <?php if($S["quantity"]>0)
+                                    echo "In Stock";
+                                    else
+                                        echo "Out Of Stock";
+                                    ?>
+                                    </strong></span><br>
                                 </div>
                             </div>
                         </td>
@@ -97,7 +101,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <td class="col-sm-1" style="text-align: left">
                             <span style="font-family:initial;"><?php echo $S["book_type"]; ?> </span><br>
                         </td>
-                        
+
                         <td class="col-sm-1 col-md-1 text-center"><strong><?php echo $S["price"]; ?></strong></td>
                         <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger" onClick="document.location.href='removeFromWishlist.php?book_id=<?php echo $book_id; ?>'">

@@ -109,7 +109,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         Browse
                         <input type="file" name="bookCover"onchange="readURL(this);" />
                     </label>
-                    <img id="preview" src="http://placehold.it/180" alt="your image" />
+                    <img id="preview" src="images/selectImage.jpg" alt="your image" />
 
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit" name="signup" value="submit">

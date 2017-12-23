@@ -1,9 +1,18 @@
 <?php
 
-session_start();
-require_once '../db/db_init.php';
-include 'admin_index.php';
+    require_once '../db/db_init.php';
+    include 'admin_index.php';
+
+
+
+
 ?>
+
+
+
+<head>
+    <title>Add Admin | BookBro</title>
+</head>
 
 <script type="text/javascript">
     //stackoverflow
@@ -30,78 +39,61 @@ include 'admin_index.php';
     }
 
     function validate(){
-        flag=true;
+        var name= document.getElementById('name');
+        var pass= document.getElementById('pass');
+        var flag=true;
+        if(name.value.length==0|| pass.value.length==0){
+            if(name.value.length==0){
+                alert("Insert User Name");
+                name.style.border= "solid 2px red";
+                name.focus();
 
-        //m1 = document.getElementById("id");
-        m2 = document.getElementById("name");
-        m3 = document.getElementById("pass");
+            }
+            if(pass.value.length==0){
+                alert("Insert Password!");
 
-        /*if(document.forms[0].elements[0].value.length==0){
-		m1.style.color="#e00000";
-		m1.innerHTML="<br>Enter  ID";
-		flag=false;
-	}*/
-        if(document.forms[0].elements[0].value.length==0){     
-
-            m2.style.color="#e00000";
-            m2.innerHTML="<br>Enter  Name";
-
-
-
+                pass.style.border= "solid 2px red";
+                pass.focus();
+            }
             flag=false;
         }
-        if(document.forms[0].elements[1].value.length==0){
-
-
-            m3.style.color="#e00000";
-            m3.innerHTML="<br>Enter  Password";
-
-            flag=false;
+        
+        if(name.value.length!=0){
+            name.style.border= "solid 2px steelblue";
 
 
         }
-        if(document.forms[0].elements[1].value.length<8){
+        if(pass.value.length!=0){
+            pass.style.border= "solid 2px steelblue";
+            if(pass.value.length<8){
 
             alert("Password must be of 8 character!");
-            document.getElementById("tpass").focus();
+            pass.focus();
             flag=false;
         }
-        /*if(document.forms[0].elements[0].value.length!=0){
-		m1.style.color="#555555";
-		m1.innerHTML="<br>Admin  ID";
 
-	}*/
-        if(document.forms[0].elements[0].value.length!=0){
-
-            m2.style.color="#555555";
-            m2.innerHTML="<br>Name";
 
         }
-        if(document.forms[0].elements[1].value.length!=0){
-            m3.style.color="#555555";
-            m3.innerHTML="<br>Password";
-
-        }
-
         return flag;
+
     }
 </script>
 
 <div class="new">
 
-    <form action="addAdminQuery.php"  method="post">
+    <form action="addAdminQuery.php"  method="post" >
         <div class="first_block">
             <h2>Add Admin</h2>
             <hr>
             <!--<p id="id">Admin ID</p>
 <input type="text"  placeholder="Input Admin Id here(Max-4)" name="adminID" onkeypress="return isNumber(event)" maxlength="4">
 -->
-            <p id="name">Name</p>
-            <input type="text" placeholder="Input Admin Name Here(Max-10)" name="adminName" onInput="checkLength(10,this)">
-            <p id="pass">Password</p>
-            <input id="tpass" type="text" placeholder="Password Has to be of 8 character" name="adminPass" onInput="checkLength(8,this)" >
+            <p >Name</p>
+            <input type="text" id="name" placeholder="Input Admin Name Here(Max-10)" name="adminName" onInput="checkLength(10,this)">
+            <p>Password</p>
+            <input id="pass" type="text" placeholder="Password Has to be of 8 character" name="adminPass" onInput="checkLength(8,this)" >
 
-            <input type="submit" onclick="return validate();" value="Submit" >
+            <input type="submit"  onclick="return validate()" value="Submit" >
 
 
         </div>

@@ -77,18 +77,42 @@ if(($gender!="MALE")&& ($gender!="FEMALE")){
     $flag=0;
 }
 
-if (($_POST["checkbx"]!="Agree")||isset($_POST["checkbx"])) {
+if ($_POST["checkbx"]!="Agree") {
     echo "Agreement not accepted!";
     $flag=0;
 }
 echo "<br>";
+
+//
+$sql = "SELECT * FROM user_info WHERE email='$email'";
+$result=mysqli_query($conn,$sql);
+$count=0;
+$count=mysqli_num_rows($result);
+
+if($count>0)
+{   
+    echo '<script>alert("Email Already Exist")</script>';
+    echo '<script>window.location = "signup.php";</script>';
+    $flag=0;
+}
+//
+$mbNo = $_POST["mbNo"];
+$sql = "SELECT * FROM user_info WHERE mobile_no='$mbNo'";
+$result=mysqli_query($conn,$sql);
+$count=0;
+$count=mysqli_num_rows($result);
+if($count>0)
+{   
+    echo '<script>alert("Mobile No Already Exist")</script>';
+    echo '<script>window.location = "signup.php";</script>';
+    $flag=0;
+}
 
 if($flag==1)
 {
 
 $fullname = $_POST["fname"];
 $email = $_POST["email"];
-$mbNo = $_POST["mbNo"];
 $password = $_POST["pass"];
 $dob = $_POST["date"];
 $address = $_POST["address"];
@@ -101,7 +125,10 @@ $gender = $_POST["gender"];
 $_SESSION["SignUpStatus"] = "Complete";
  header("Location: signup.php");
 }
-    
+else{
+    echo '<script>alert("Please Insert Your Data Correctly")</script>';
+    echo '<script>window.location = "signup.php";</script>';   
+}
 ?>
 </pre>
 

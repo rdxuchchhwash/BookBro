@@ -1,33 +1,45 @@
+
 <?php
 require_once '../db/db_init.php';
 include 'admin_index.php';
 ?>
 
-
+<head><title>Old Book Status | BookBro</title></head>
 
 
 <div class="new">
 
-    <form action="#" enctype="multipart/form-data" method="post">
+    <form action="oldBookStatQuery.php" method="post">
         <div class="first_block">
 
             <h2>OLD BOOK STATUS </h2>
             <hr>
-            <p>Old Book ID</p>
-            <input type="text" placeholder="Input Old Book ID here" name="book_id" >
+            <p>Book ID</p>
+            <select name="bookID" class="form-control" id="category">
+                <?php
+                $sql = "select * from oldbookstat";
+                $catquery=mysqli_query($conn,$sql);
+                ?> 
+                <?php while($S=mysqli_fetch_assoc($catquery)):?>
 
-            <input type="submit" value="Get Status" >
+                <option><?php echo $S['old_book_id'] ;?></option>
+
+                <?php endwhile; ?>
+
+            </select>
+
+            
             <br><br>
 
 
             <p>Book Status</p>
-            <select name="author" class="form-control" id="author">
+            <select name="status" class="form-control" id="author">
                 <option>PENDING</option>
                 <option>APPROVED</option>
                 <option>DECLINE</option>
             </select>
 
-            <input type="submit" value="Update" style="background-color:#08ad19">
+            <input type="submit" name="update" value="Update" style="background-color:#08ad19">
         </div>
     </form>
 
