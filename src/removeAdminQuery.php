@@ -31,7 +31,14 @@ if($temp==1){
 
 
         if($conn->query($sql) === TRUE) {
-            
+            //admin record start
+            $date=date("Y-m-d");
+            $time=date("h:i:sa");
+            $admin_id= $_SESSION['admin_id'];
+            $operation="ADMIN REMOVED";
+            $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+            mysqli_query($conn,$sql);
+            //admin record end
             echo '<script type="text/javascript">'; 
             echo 'alert("Admin Information Deleted");'; 
             echo 'window.location.href = "removeAdmin.php";';
@@ -44,9 +51,9 @@ if($temp==1){
     }
     else{
         echo '<script type="text/javascript">'; 
-            echo 'alert("Admin info not found! Try again!");'; 
-            echo 'window.location.href = "removeAdmin.php";';
-            echo '</script>';
+        echo 'alert("Admin info not found! Try again!");'; 
+        echo 'window.location.href = "removeAdmin.php";';
+        echo '</script>';
     }
 
 

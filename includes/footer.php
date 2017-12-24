@@ -38,7 +38,7 @@
                                     <ul>
                                         <li><a href="/BookBro/footer_testimonial.php"> Testimonial</a></li>
                                         <li><a href="/BookBro/footer_aboutUs.php"> About Us</a></li>
-                                        <li><a href="#"> Site Map</a></li>
+                                    
                                     </ul>
                                 </div>
                             </div>

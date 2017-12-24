@@ -1,6 +1,9 @@
 <?php
 require_once '../db/db_init.php';
 include 'admin_index.php';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <head><title>Remove Category | BookBro</title></head>

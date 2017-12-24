@@ -1,6 +1,7 @@
 <?php
 require_once '../db/db_init.php';
 include 'admin_index.php';
+
 ?>
 
 <head><title>Remove Author | BookBro</title></head>

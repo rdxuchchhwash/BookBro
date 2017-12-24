@@ -45,6 +45,16 @@ if($temp==1){
 
 
         if($conn->query($sql) === TRUE) {
+
+            //admin record start
+            $date=date("Y-m-d");
+            $time=date("h:i:sa");
+            $admin_id= $_SESSION['admin_id'];
+            $operation="UPDATED ADMIN INFO";
+            $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+            mysqli_query($conn,$sql);
+            //admin record end
+            
             echo '<script type="text/javascript">'; 
             echo 'alert("Admin Information Updated");'; 
             echo 'window.location.href = "updateAdmin.php";';
@@ -57,9 +67,9 @@ if($temp==1){
     }
     else{
         echo '<script type="text/javascript">'; 
-            echo 'alert("Admin name not found! Try again!");'; 
-            echo 'window.location.href = "updateAdmin.php";';
-            echo '</script>';
+        echo 'alert("Admin name not found! Try again!");'; 
+        echo 'window.location.href = "updateAdmin.php";';
+        echo '</script>';
     }
 
 

@@ -14,7 +14,7 @@ if($_SESSION["login_status"]=="reset")
 
 else if($_SESSION["login_status"]=="success")
 {   
-
+    
     $date=date("Y-m-d");
     $ptotal=0;
     $sql = "SELECT * FROM shipment ORDER BY ID DESC LIMIT 1"; 
@@ -30,6 +30,13 @@ else if($_SESSION["login_status"]=="success")
 
     $sql = "select * from tempcart where session_id='$sess'";
     $result=mysqli_query($conn,$sql);
+    $ck=mysqli_num_rows($result);
+    if($ck==0)
+    {   
+         echo '<script>alert("Cart Is Empty")</script>';
+    echo '<script>window.location = "orderDetails.php";</script>';
+        
+    }
     while($products=mysqli_fetch_assoc($result))
     {
 

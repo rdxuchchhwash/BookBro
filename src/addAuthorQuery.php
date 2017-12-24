@@ -24,6 +24,16 @@ if($temp==1){
 
 
     if ($conn->query($sql) === TRUE) {
+
+        //admin record start
+        $date=date("Y-m-d");
+        $time=date("h:i:sa");
+        $admin_id= $_SESSION['admin_id'];
+        $operation="ADDED AUTHOR";
+        $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+        mysqli_query($conn,$sql);
+        //admin record end
+
         echo '<script type="text/javascript">'; 
         echo 'alert("Author Information Saved");'; 
         echo 'window.location.href = "addAdmin.php";';

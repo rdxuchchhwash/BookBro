@@ -82,7 +82,7 @@ include 'admin_index.php';
             <p>Admin Name</p>
             <input type="text" placeholder="Input Admin Username here" name="oldName" id="oldName">
             <p>New Admin Name</p>
-            <input type="text" placeholder="Input New Username here" name="newAdminName" id="newName" onInput="checkLength(10,this)">
+            <input type="text" placeholder="Input New Username here" name="newAdminName" id="newName" >
 
             <p>New Password</p>
             <input type="text" placeholder="Input New Password  here" name="newAdinPass" id="pass" onInput="checkLength(8,this)">

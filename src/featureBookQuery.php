@@ -4,7 +4,6 @@ session_start();
 
 require_once '../db/db_init.php';
 $id = $_POST["bookID"];
-$rid= $_POST["rbookID"];
 $temp = 1;
 if(strlen($_POST["bookID"])==0){
     echo "enter book id!";
@@ -15,15 +14,7 @@ if(is_numeric($_POST["bookID"])==false){
     $temp=0;
 }
 echo "<br>";
-if(strlen($_POST["rbookID"])==0){
-    echo "enter book id!";
-    $temp=0;
-}
-if(is_numeric($_POST["rbookID"])==false){
-    echo "ID has to be a Integer";
-    $temp=0;
-}
-echo "<br>";
+
 
 if($temp==1){
 
@@ -55,6 +46,15 @@ if($temp==1){
                 echo 'window.location.href = "featureBook.php";';
                 echo '</script>';
 
+                //admin record start
+                $date=date("Y-m-d");
+                $time=date("h:i:sa");
+                $admin_id= $_SESSION['admin_id'];
+                $operation="ADDED FEATURED BOOK";
+                $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+                mysqli_query($conn,$sql);
+                //admin record end
+
             } else {
                 echo "Error: " . $sql1 . "<br>" . $conn->error;
             }
@@ -74,11 +74,30 @@ if($temp==1){
 
     elseif (isset($_POST['remove'])) {
 
+
+        $rid= $_POST["rbookID"];
+        if(strlen($_POST["rbookID"])==0){
+            echo "enter book id!";
+            $temp=0;
+        }
+        if(is_numeric($_POST["rbookID"])==false){
+            echo "ID has to be a Integer";
+            $temp=0;
+        }
+        echo "<br>";
         $sql = "delete from featured_books where id='$rid'";
 
 
         if($conn->query($sql) === TRUE) {
 
+            //admin record start
+            $date=date("Y-m-d");
+            $time=date("h:i:sa");
+            $admin_id= $_SESSION['admin_id'];
+            $operation="REMOVED FEATURED BOOK";
+            $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+            mysqli_query($conn,$sql);
+            //admin record end
             echo '<script type="text/javascript">'; 
             echo 'alert("Featured Book Deleted");'; 
             echo 'window.location.href = "featureBook.php";';

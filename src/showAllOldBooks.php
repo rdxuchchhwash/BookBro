@@ -3,6 +3,8 @@ include 'admin_index.php';
 require_once '../db/db_init.php' ; 
 ?>
 
+<head><title>Show All Books | BookBro</title></head>
+
 
 <div class="new">
 

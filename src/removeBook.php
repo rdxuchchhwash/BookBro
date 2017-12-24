@@ -7,12 +7,12 @@ include 'admin_index.php'
 <head><title>Remove Admin | BookBro</title></head>
 <div class="new">
 
-    <form action="removeBookQuery.php" enctype="multipart/form-data" method="post">
+    <form action="removeBookQuery.php" method="post">
        <div class="first_block">
         <h2>Remove Book</h2>
         <hr>
         <p>Book ID</p>
-         <select name="bookID" class="form-control" id="category">
+         <select name="bookID" class="form-control">
                     <?php
                     $sql = "select * from books";
                     $catquery=mysqli_query($conn,$sql);

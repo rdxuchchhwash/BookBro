@@ -24,6 +24,7 @@
                         <a href="updateAdmin.php"><li>UPDATE INFO</li></a>
                         <a href="removeAdmin.php"><li>REMOVE ADMIN</li></a>
 						<a href="adminRecords.php"><li>ADMIN RECORDS</li></a>
+                        <a href="showAllAdmin.php"><li>SHOW ALL ADMIN</li></a>
                     </ul>
                 </li>
             </a>
@@ -54,6 +55,15 @@
                         <a href="updateAuthor.php"><li>UPDATE AUTHOR</li></a>
                         <a href="RemoveAuthor.php"><li>REMOVE AUTHOR</li></a>
 						<a href="showAllAuthor.php"><li>SHOW ALL AUTHOR</li></a>
+                    </ul>
+                </li>
+            </a>
+            <a href="">
+                <li>REPORTS
+                    <ul>
+						<a href="reportStatus.php"><li>REPORT STATUS</li></a>
+                        <a href="showAllReports.php"><li>SHOW ALL REPORTS</li></a>
+      
                     </ul>
                 </li>
             </a>

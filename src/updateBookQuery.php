@@ -125,6 +125,16 @@ if($flag==1)
         move_uploaded_file($s,"../".$n);
         $sql = "update books SET bk_name='$bookName',category='$category',author='$author',description='$description',quantity='$qty',price='$price',img_path='$imgPath',date='$date',country='$country',language='$language' where id='$book_id'";
         mysqli_query($conn,$sql);
+
+        //admin record start
+        $date=date("Y-m-d");
+        $time=date("h:i:sa");
+        $admin_id= $_SESSION['admin_id'];
+        $operation="UPDATED BOOK INFO";
+        $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+        mysqli_query($conn,$sql);
+        //admin record end
+
         echo '<script type="text/javascript">'; 
         echo 'alert("Book Updated");'; 
         echo 'window.location.href = "updateBook.php";';

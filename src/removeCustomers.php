@@ -38,7 +38,7 @@ include 'admin_index.php';
             <h2>Remove Customer by ID</h2>
             <hr>
             <p>Customer ID</p>
-            <input type="text" placeholder="Input Customer ID here" name="customerID" id="cID" onkeypress="return isNumber(event);">     
+            <input type="text" placeholder="Input Customer ID here" name="customerID" id="cID" onkeypress="return isNumber(event);" autofocus>     
             <input type="submit" class="" value="Remove" style="background-color:#cc4128" onclick="return validate()">
 
         </div>

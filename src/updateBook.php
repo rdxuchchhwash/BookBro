@@ -6,7 +6,7 @@ include 'admin_index.php';
 ?>
 <head><title>Update Book | BookBro</title></head>
 
-    
+
 <script type="text/javascript">
     function isNumber(evt) {
         evt = (evt) ? evt : window.event;
@@ -43,6 +43,14 @@ include 'admin_index.php';
         var price = document.getElementById('bPrice'); 
         var country= document.getElementById('bCountry');
 
+        if(id.value.length==0){
+
+            alert("Insert Book ID");
+            id.style.border= "solid 2px red";
+            id.focus();
+
+            flag=false;
+        }
 
         if(name.value.length==0){
 
@@ -53,14 +61,7 @@ include 'admin_index.php';
             flag=false;
         }
 
-        if(id.value.length==0){
 
-            alert("Insert Book ID");
-            id.style.border= "solid 2px red";
-            id.focus();
-
-            flag=false;
-        }
 
         if(description.value.length==0){
 
@@ -79,6 +80,14 @@ include 'admin_index.php';
 
             flag=false;
         }
+        if(country.value.length==0){
+
+            alert("Enter country name");
+            country.style.border= "solid 2px red";
+            country.focus();
+
+            flag=false;
+        }
 
         if(quantity.value.length==0){
 
@@ -88,14 +97,7 @@ include 'admin_index.php';
 
             flag=false;
         }
-        if(country.value.length==0){
 
-            alert("Enter country name");
-            country.style.border= "solid 2px red";
-            country.focus();
-
-            flag=false;
-        }
 
         if(price.value.length==0){
 
@@ -135,36 +137,25 @@ include 'admin_index.php';
 
 
         }
-        if(quantity.value==0){
-            alert("Quantity can not be 0");
-            quantity.style.border= "solid 2px red";
-            quantity.focus();
-            flag=false;
-        }
-        if(price.value==0){
-            alert("Price can not be 0");
-            price.style.border= "solid 2px red";
-            price.focus();
-            flag=false;
-        } 
         if(id.value==0 || id.value<0){
             alert("ID can not be 0 or less");
             id.style.border= "solid 2px red";
             id.focus();
             flag=false;
         }
-        if(quantity.value<0){
-            alert("Quantity  can not negative");
+        if(quantity.value==0 || quantity.value<0){
+            alert("Quantity can not be 0 or less");
             quantity.style.border= "solid 2px red";
             quantity.focus();
             flag=false;
         }
-        if(price.value<0){
-            alert("Price can not Negative");
+        if(price.value==0 || price.value<0){
+            alert("Price can not be 0 or less");
             price.style.border= "solid 2px red";
             price.focus();
             flag=false;
-        }
+        } 
+
 
         return flag;
 
@@ -182,31 +173,31 @@ include 'admin_index.php';
             <p>Book Name</p>
             <input type="text" placeholder="Book Name" name="bname" id="bName">
             <p>Category</p>
-                   <div class="form-group">
-                        <select name="category" class="form-control" id="category">
-                            <?php
-                            $sql = "select * from category";
-                            $catquery=mysqli_query($conn,$sql);
-                            ?> 
-                            <?php while($S=mysqli_fetch_assoc($catquery)):?>
-                           
-                            <option><?php echo $S['category_name'] ;?></option>
-                            
-                            <?php endwhile; ?>
+            <div class="form-group">
+                <select name="category" class="form-control" id="category">
+                    <?php
+                    $sql = "select * from category";
+                    $catquery=mysqli_query($conn,$sql);
+                    ?> 
+                    <?php while($S=mysqli_fetch_assoc($catquery)):?>
 
-                        </select>
-                    </div> 
+                    <option><?php echo $S['category_name'] ;?></option>
+
+                    <?php endwhile; ?>
+
+                </select>
+            </div> 
             <p>Author</p>
-                   <div class="form-group">
-                        <select name="author" class="form-control" id="author">
-                            <?php
-                            $sql = "select * from authors";
-                            $catquery=mysqli_query($conn,$sql);
-                            ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
-                            <option><?php echo $S['author_name'] ;?></option>
-                            <?php endwhile; ?>
-                        </select>
-                    </div> 
+            <div class="form-group">
+                <select name="author" class="form-control" id="author">
+                    <?php
+                    $sql = "select * from authors";
+                    $catquery=mysqli_query($conn,$sql);
+                    ?> <?php while($S=mysqli_fetch_assoc($catquery)):?>
+                    <option><?php echo $S['author_name'] ;?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div> 
             <p>Description</p>
 
             <textarea placeholder="Write a small description about the book" name="description" id="bDescription"></textarea><br>
@@ -221,7 +212,7 @@ include 'admin_index.php';
         <div class="second_block">
 
             <input type="file" name="bookCover"onchange="readURL(this);" />
-           <img id="preview" src="../images/180.jpg" alt="Preview image" />
+            <img id="preview" src="../images/180.jpg" alt="Preview image" />
             <script>
                 function readURL(input) {
                     if (input.files && input.files[0]) {

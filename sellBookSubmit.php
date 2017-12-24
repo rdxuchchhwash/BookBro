@@ -68,7 +68,7 @@ $type=mysqli_fetch_assoc($result);
 
 $count=$type["id"];
 $count++;
-echo $count;
+
 $n=0;
 $date=date("Y-m-d");
 
@@ -101,7 +101,7 @@ if($flag==1)
     $sql = "insert into oldbookstat (old_book_id,book_status,old_book_seller_mail,seller_contact,seller_name) values('$count','PENDING','$email','$sellerCont','$sellerName')";
     mysqli_query($conn,$sql);
  
-    print_r($GLOBALS);
+    
     echo '<script>alert("Sell Book Submitted.Waiting For Admin Approval")</script>';
     echo '<script>window.location = "sellBook.php";</script>';
 

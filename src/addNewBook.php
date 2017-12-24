@@ -68,14 +68,6 @@ include 'admin_index.php';
             flag=false;
         }
 
-        if(quantity.value.length==0){
-
-            alert("Enter a valid quantity");
-            quantity.style.border= "solid 2px red";
-            quantity.focus();
-
-            flag=false;
-        }
         if(country.value.length==0){
 
             alert("Enter country name");
@@ -84,7 +76,15 @@ include 'admin_index.php';
 
             flag=false;
         }
+        
+        if(quantity.value.length==0){
 
+            alert("Enter a valid quantity");
+            quantity.style.border= "solid 2px red";
+            quantity.focus();
+
+            flag=false;
+        }
         if(price.value.length==0){
 
             alert("Enter a valid price");
@@ -103,16 +103,7 @@ include 'admin_index.php';
 
 
         }
-        if(price.value.length!=0){
-            price.style.border= "solid 2px steelblue";
 
-
-        } 
-        if(quantity.value.length!=0){
-            quantity.style.border= "solid 2px steelblue";
-
-
-        } 
         if(language.value.length!=0){
             language.style.border= "solid 2px steelblue";
 
@@ -123,31 +114,29 @@ include 'admin_index.php';
 
 
         }
-        if(quantity.value==0){
-            alert("Quantity can not be 0");
+        if(price.value.length!=0){
+            price.style.border= "solid 2px steelblue";
+
+
+        } 
+        if(quantity.value.length!=0){
+            quantity.style.border= "solid 2px steelblue";
+
+
+        } 
+        if(quantity.value==0 || quantity.value<0){
+            alert("Quantity can not be 0 or negative");
             quantity.style.border= "solid 2px red";
             quantity.focus();
             flag=false;
         }
-        if(price.value==0){
-            alert("Price can not be 0");
+        if(price.value==0 || price.value<0){
+            alert("Price can not be 0 or less");
             price.style.border= "solid 2px red";
             price.focus();
             flag=false;
         } 
-        
-        if(quantity.value<0){
-            alert("Quantity  can not negative");
-            quantity.style.border= "solid 2px red";
-            quantity.focus();
-            flag=false;
-        }
-        if(price.value<0){
-            alert("Price can not Negative");
-            price.style.border= "solid 2px red";
-            price.focus();
-            flag=false;
-        }
+
 
         return flag;
 

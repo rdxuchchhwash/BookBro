@@ -12,6 +12,14 @@ if (session_status() == PHP_SESSION_NONE) {
 <link rel="stylesheet" href="css/sellBook.css">
 
 <script>
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
 
     function showCart() {
         var xhttp = new XMLHttpRequest();
@@ -39,6 +47,133 @@ if (session_status() == PHP_SESSION_NONE) {
 </script>
 
 <script>
+    function validate(){
+        var flag= true;
+        var name = document.getElementById("name");
+        var desc = document.getElementById("desc");
+        var quan = document.getElementById("quan");
+        var price = document.getElementById("price");
+        var lang = document.getElementById("lang");
+        var country = document.getElementById("country");
+        
+        
+        if(name.value.length==0){
+
+            alert("Insert Book Name");
+            name.style.border= "solid 2px red";
+            name.focus();
+
+            flag=false;
+        }
+
+
+        if(desc.value.length==0){
+
+            alert("Please write a small description");
+            desc.style.border= "solid 2px red";
+            desc.focus();
+
+            flag=false;
+        }
+
+        if(lang.value.length==0){
+
+            alert("Enter Book's language");
+            lang.style.border= "solid 2px red";
+            lang.focus();
+
+            flag=false;
+        }
+
+        if(quan.value.length==0){
+
+            alert("Enter a valid quantity");
+            quan.style.border= "solid 2px red";
+            quan.focus();
+
+            flag=false;
+        }
+        if(country.value.length==0){
+
+            alert("Enter country name");
+            country.style.border= "solid 2px red";
+            country.focus();
+
+            flag=false;
+        }
+
+        if(price.value.length==0){
+
+            alert("Enter a valid price");
+            price.style.border= "solid 2px red";
+            price.focus();
+
+            flag=false;
+        }
+        if(name.value.length!=0){
+            name.style.border= "solid 2px steelblue";
+
+
+        } 
+        if(desc.value.length!=0){
+            desc.style.border= "solid 2px steelblue";
+
+
+        }
+        if(price.value.length!=0){
+            price.style.border= "solid 2px steelblue";
+
+
+        } 
+        if(quan.value.length!=0){
+            quan.style.border= "solid 2px steelblue";
+
+
+        } 
+        if(lang.value.length!=0){
+            lang.style.border= "solid 2px steelblue";
+
+
+        }
+        if(country.value.length!=0){
+            country.style.border= "solid 2px steelblue";
+
+
+        }
+        if(quan.value==0){
+            alert("Quantity can not be 0");
+            quan.style.border= "solid 2px red";
+            quan.focus();
+            flag=false;
+        }
+        if(price.value==0){
+            alert("Price can not be 0");
+            price.style.border= "solid 2px red";
+            price.focus();
+            flag=false;
+        } 
+       
+        if(quan.value<0){
+            alert("Quantity  can not negative");
+            quan.style.border= "solid 2px red";
+            quan.focus();
+            flag=false;
+        }
+        if(price.value<0){
+            alert("Price can not Negative");
+            price.style.border= "solid 2px red";
+            price.focus();
+            flag=false;
+        }
+
+        return flag;
+        
+        
+        
+    }
+    
+    
+    
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -61,17 +196,17 @@ if (session_status() == PHP_SESSION_NONE) {
 
                 <form class="form-sellBook" action=sellBookSubmit.php method="POST" enctype="multipart/form-data">
 
-                    <input type="text" name="bk_name" class="form-control" placeholder="Book Name" required autofocus>
+                    <input type="text" name="bk_name" class="form-control" placeholder="Book Name" id="name">
 
-                    <input type="text" name="description" class="form-control" placeholder="Enter the Description" required>
+                    <input type="text" name="description" class="form-control" placeholder="Enter the Description"  id="desc">
 
-                    <input type="text" name="quantity" class="form-control" placeholder="Enter the Quantity" required>
+                    <input type="text" name="quantity" class="form-control" placeholder="Enter the Quantity" id="quan" onkeypress="return isNumber(event);">
 
-                    <input type="text" name="price" class="form-control" placeholder="Enter the Price">
+                    <input type="text" name="price" class="form-control" placeholder="Enter the Price" id="price" onkeypress="return isNumber(event);">
 
-                    <input type="text" name="country" class="form-control" placeholder="Country  Name" required autofocus>
+                    <input type="text" name="country" class="form-control" placeholder="Country  Name" id="country" >
 
-                    <input type="text" name="language" class="form-control" placeholder="Language" required autofocus>
+                    <input type="text" name="language" class="form-control" placeholder="Language" id="lang" >
 
                     <div class="form-group">
                         <label for="sel1">Category</label>
@@ -112,7 +247,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <img id="preview" src="images/selectImage.jpg" alt="your image" />
 
 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" name="signup" value="submit">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" name="signup" value="submit" onclick="return validate();">
                         SELL BOOK</button>
 
                 </form>

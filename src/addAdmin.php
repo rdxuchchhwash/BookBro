@@ -1,10 +1,7 @@
 <?php
 
-    require_once '../db/db_init.php';
-    include 'admin_index.php';
-
-
-
+require_once '../db/db_init.php';
+include 'admin_index.php';
 
 ?>
 
@@ -57,7 +54,7 @@
             }
             flag=false;
         }
-        
+
         if(name.value.length!=0){
             name.style.border= "solid 2px steelblue";
 
@@ -67,10 +64,11 @@
             pass.style.border= "solid 2px steelblue";
             if(pass.value.length<8){
 
-            alert("Password must be of 8 character!");
-            pass.focus();
-            flag=false;
-        }
+                alert("Password must be of 8 character!");
+                pass.style.border= "solid 2px red";
+                pass.focus();
+                flag=false;
+            }
 
 
         }
@@ -89,7 +87,7 @@
 <input type="text"  placeholder="Input Admin Id here(Max-4)" name="adminID" onkeypress="return isNumber(event)" maxlength="4">
 -->
             <p >Name</p>
-            <input type="text" id="name" placeholder="Input Admin Name Here(Max-10)" name="adminName" onInput="checkLength(10,this)">
+            <input type="text" id="name" placeholder="Input Admin Name Here" name="adminName">
             <p>Password</p>
             <input id="pass" type="text" placeholder="Password Has to be of 8 character" name="adminPass" onInput="checkLength(8,this)" >
 

@@ -19,7 +19,7 @@ include 'admin_index.php';
 
         }
         if(desc.value.length==0){
-            alert("Insert User Name");
+            alert("Insert Author Details");
             desc.style.border= "solid 2px red";
             desc.focus();
             flag=false;

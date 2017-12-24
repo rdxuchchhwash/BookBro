@@ -121,11 +121,23 @@ if($flag==1)
     $n="images/".$n;
     $sql = "insert into books (bk_name,category,author,description,quantity,price,img_path,date,country,language,book_type,no_of_views) values('$bookName','$category','$author','$description',$qty,$price,'$n','$date','$country','$language','NEW',0)";
     mysqli_query($conn,$sql);
+
+    //admin record start
+    $date=date("Y-m-d");
+    $time=date("h:i:sa");
+    $admin_id= $_SESSION['admin_id'];
+    $operation="ADDED NEW BOOK";
+    $sql = "insert into admin_records (admin_id,operation,time,date) values('$admin_id','$operation','$time','$date')";
+    mysqli_query($conn,$sql);
+    //admin record end
+    
     echo '<script type="text/javascript">'; 
     echo 'alert("New Book Added");'; 
     echo 'window.location.href = "addNewBook.php";';
 
     echo '</script>';
+
+
 }
 
 ?>
